@@ -1,0 +1,33 @@
+<%= render 'users/left_partial' %>
+
+
+<%= form_with(model: current_user.active_relationships.build, local: true) do |f| %>
+  <div><%= hidden_field_tag :followed_id, @user.id %></div>
+  <%= f.submit "Follow", class: "btn btn-primary" %>
+<% end %>
+
+<%= form_with(model: current_user.active_relationships.find_by(followed_id: @user.id),
+            html: { method: :delete }, local: true) do |f| %>
+  <%= f.submit "Unfollow", class: "btn" %>
+<% end %>
+<div class="user_prf">
+<% if @user.image? %>
+<%= image_tag @user.image.url, class: "user_icon" %>
+<% end %>
+</div>
+
+<ul class="prf_catalog">
+<li><%= @user.name %></li>
+<li><%= @user.age %></li>
+<li><%= @user.sex %></li>
+<li><%= @user.height %></li>
+<li><%= @user.Body_shape %></li>
+<li><%= @user.blood_type %></li>
+<li><%= @user.residence %></li>
+<li><%= @user.Birthplace %></li>
+<li><%= @user.holiday %></li>
+<li><%= @user.work %></li>
+<li><%= link_to "ユーザー", edit_prf_path(current_user) %></li>
+</ul>
+
+</div>

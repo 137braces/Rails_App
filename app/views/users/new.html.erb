@@ -1,0 +1,29 @@
+<h1>Sign up</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @user, local: true) do |f| %>
+    <%= render 'shared/error_messages' %>
+      <%= f.label :name, "ニックネーム"  %>
+      <%= f.text_field :name %>
+
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email %>
+
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "パスワード確認" %>
+      <%= f.password_field :password_confirmation %>
+      
+      <%= f.label :sex, "性別" %>
+      <%= f.select :sex, User.sexes.keys,{include_blank: '選択してください'}, class: "form-control" %>
+      
+      <%= f.label :age, "年齢" %>
+      <%= f.select :age, { "18歳": 18, "19歳": 19, "20歳": 20, "21歳": 21, "22歳": 22, "23歳": 23, "24歳": 24, "25歳": 25, "26歳": 26, "27歳": 27, "28歳": 28, "29歳": 29, "30歳": 30, "31歳": 31, "32歳": 32, "33歳": 33, "34歳": 34, "35歳": 35, "36歳": 36, "37歳": 37, "38歳": 38, "39歳": 39, "40歳": 40, "41歳": 41, "42歳": 42, "43歳": 43, "44歳": 44, "45歳": 45, "46歳": 46, "47歳": 47, "48歳": 48, "49歳": 49, "50歳": 50, "51歳": 51, "52歳": 52, "53歳": 53, "54歳": 54, "55歳": 55, "56歳": 56, "57歳": 57, "58歳": 58, "59歳": 59, "60歳": 60 }, { include_blank: 'タップして選択'}, { class: 'form-control' , required: false } %>
+      
+      <%= f.submit "新規作成をする", class: "btn btn-primary" %>
+      
+    <% end %>
+  </div>
+</div>

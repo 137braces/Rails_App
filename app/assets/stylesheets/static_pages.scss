@@ -1,0 +1,47 @@
+.small-heading {
+  margin-top: 8%; 
+}
+
+.fa-heart2 {
+  margin-top: 3%;    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  color: #de4557;
+}
+
+.btn--signup,
+a.btn--signup {
+  color: #fff;
+  font-weight: bolder;
+  background-color: #03b1fc;
+  /* 上 | 右 | 下 | 左 */
+  padding: 0.5em 1.5em 0.5em 1.5em;
+  font-size: 16px;
+}
+
+.btn--signup:hover,
+a.btn--signup:hover {
+  color: #fff;
+  background: #3098ba;
+  transition: 1.0s ;
+}
+
+.btn--signup2,
+a.btn--signup2 {
+  margin-top: 3%;
+  color: #fff;
+  font-weight: bolder;
+  background-color: #03b1fc;
+  /* 上 | 右 | 下 | 左 */
+  padding: 1em 4em 1em 4em;
+  font-size: 16px;
+}
+
+.btn--signup2:hover,
+a.btn--signup2:hover {
+  color: #fff;
+  background: #3098ba;
+  transition: 1.0s ;
+}

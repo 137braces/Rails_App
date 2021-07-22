@@ -1,0 +1,8 @@
+<%= render 'users/left_partial' %>
+
+<div class="main-contents">
+  <ul>    
+    <li><%= link_to "メールアドレスとパスワードを変更する", edit_user_path %></li>
+    <li><%= link_to "ログアウトする", logout_path, method: :delete %></li>
+  </ul>
+</div>

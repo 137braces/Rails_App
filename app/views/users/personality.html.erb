@@ -1,0 +1,52 @@
+
+<%= form_with(model: @item, local: true) do |f| %>
+<ul>
+      <li>優しい<%= f.check_box :Personality, {}, "優しい" %></li>
+      <li>素直<%= f.check_box :Personality, {},"素直" %></li>
+      <li>決断力がある<%= f.check_box :Personality, {},"決断力がある" %></li>
+      <li>穏やか<%= f.check_box :Personality, {},"穏やか" %></li>
+      <li>親しみやすい<%= f.check_box :Personality, {},"親しみやすい" %></li>
+      <li>明るい<%= f.check_box :Personality, {},"明るい" %></li>
+      <li>インドア<%= f.check_box :Personality, {},"インドア" %></li>
+      <li><%= f.check_box :Personality, {},"アウトドア" %></li>
+      <li><%= f.check_box :Personality, {},"真面目" %></li>
+      <li><%= f.check_box :Personality, {},"知的" %></li>
+      <li><%= f.check_box :Personality, {},"誠実" %></li>
+      <li><%= f.check_box :Personality, {},"几帳面" %></li>
+      <li><%= f.check_box :Personality, {},"楽観的" %></li>
+      <li><%= f.check_box :Personality, {},"照れ屋" %></li>
+      <li><%= f.check_box :Personality, {},"いつも笑顔" %></li>
+      <li><%= f.check_box :Personality, {},"上品" %></li>
+      <li><%= f.check_box :Personality, {},"落ち着いている" %></li>
+      <li><%= f.check_box :Personality, {},"謙虚" %></li>
+      <li><%= f.check_box :Personality, {},"厳格" %></li>
+      <li><%= f.check_box :Personality, {},"思いやりがある" %></li>
+      <li><%= f.check_box :Personality, {},"さびしがり" %></li>
+      <li><%= f.check_box :Personality, {},"社交的" %></li>
+      <li><%= f.check_box :Personality, {},"冷静沈着" %></li>
+      <li><%= f.check_box :Personality, {},"好奇心旺盛" %></li>
+      <li><%= f.check_box :Personality, {},"家庭的" %></li>
+      <li><%= f.check_box :Personality, {},"仕事好き" %></li>
+      <li><%= f.check_box :Personality, {},"責任感がある" %></li>
+      <li><%= f.check_box :Personality, {},"面倒見が良い" %></li>
+      <li><%= f.check_box :Personality, {},"話し上手" %></li>
+      <li><%= f.check_box :Personality, {},"聞き上手" %></li>
+      <li><%= f.check_box :Personality, {},"さわやか" %></li>
+      <li><%= f.check_box :Personality, {},"行動的" %></li>
+      <li><%= f.check_box :Personality, {},"合理的" %></li>
+      <li><%= f.check_box :Personality, {},"負けず嫌い" %></li>
+      <li><%= f.check_box :Personality, {},"面白い" %></li>
+      <li><%= f.check_box :Personality, {},"熱い" %></li>
+      <li><%= f.check_box :Personality, {},"気が利く" %></li>
+      <li><%= f.check_box :Personality, {},"マメ" %></li>
+      <li><%= f.check_box :Personality, {},"寛容" %></li>
+      <li><%= f.check_box :Personality, {},"大胆" %></li>
+      <li><%= f.check_box :Personality, {},"気前が良い" %></li>
+      <li><%= f.check_box :Personality, {},"天然と言われる" %></li>
+      <li><%= f.check_box :Personality, {},"裏表がない" %></li>
+      <li><%= f.check_box :Personality, {},"マイペース" %></li>
+      <li><%= f.check_box :Personality, {},"奥手" %></li>
+      <li><%= f.check_box :Personality, {},"気分屋" %></li>
+      </ul>
+      <%= f.submit "Create my account",class: "btn btn-primary" %>
+      <% end %>
