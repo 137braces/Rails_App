@@ -6,7 +6,7 @@ ruby '2.6.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.7'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.4.4'
+gem 'mysql2'#, '>= 0.4.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -24,13 +24,12 @@ gem 'bootstrap-sass', '3.4.1'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'faker',                   '2.1.2'
-gem 'will_paginate',           '3.1.8'
 gem 'bootstrap-will_paginate', '1.0.0'
 
 gem 'carrierwave'
 gem 'font-awesome-sass'
 gem 'ransack'
-
+gem 'kaminari'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -51,6 +50,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'bullet'
+  gem 'rails-controller-testing'
 end
 
 group :test do
@@ -64,6 +64,7 @@ group :test do
   gem 'database_cleaner'
   gem 'pry-rails'
 end
+
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

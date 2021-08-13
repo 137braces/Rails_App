@@ -7,8 +7,8 @@ RSpec.describe User, type: :model do
            expect(build(:user, name: nil)).to be_invalid include("can't be blank")
         end
     
-        it "名前が11文字以上の場合、登録できない" do
-           expect(build(:user, name: "x" * 11)).to be_invalid
+        it "名前が31文字以上の場合、登録できない" do
+           expect(build(:user, name: "x" * 31)).to be_invalid
         end
         it "名前が1文字の場合、登録が可能" do
            expect(build(:user, name: "x")).to be_valid
@@ -44,7 +44,7 @@ RSpec.describe User, type: :model do
     
       end
       
-      context 'メールアドレス' do
+      context 'メールアドレス(email)' do
         it "メールアドレスが重複している場合、登録ができない" do
            @user = create(:user,email: "taro@example.com")
            expect(build(:user,email: @user.email)).to be_invalid
@@ -54,9 +54,15 @@ RSpec.describe User, type: :model do
         end 
       end
       
-      context '性別' do
+      context '性別(sex)' do
         it "性別が選択(nil)の場合、登録ができない" do
            @user = build(:user, sex: nil)
+           expect(@user).to be_invalid
+        end
+      end
+      context '年齢(age)' do
+        it "年齢が選択(nil)の場合、登録ができない" do
+           @user = build(:user, age: nil)
            expect(@user).to be_invalid
         end
       end

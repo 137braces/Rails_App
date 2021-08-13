@@ -4,11 +4,11 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
-
-      <%= f.label :email %>
+      <%= render 'shared/error_messages' %>
+      <%= f.label :email,"メールアドレス" %>
       <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.label :password %>
+      <%= f.label :password, "パスワード" %>
       <%= f.password_field :password, class: 'form-control' %>
       
       <%= f.label :remember_me, class: "checkbox inline" do %>
@@ -16,7 +16,7 @@
         <span>Remember me on this computer</span>
       <% end %>
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+      <%= f.submit "ログインする", class: "btn btn-primary" %>
     <% end %>
 
     <p>New user? <%= link_to "Sign up now!", signup_path %></p>

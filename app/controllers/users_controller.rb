@@ -1,38 +1,75 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
   before_action :correct_user,   only: [:edit, :update]
+  before_action :admin_user,     only: :destroy
   
-  def index
-    @q = User.ransack(params[:q])
-    @users = @q.result(distinct: true).where(sex: "女性")
+  def match
+    @users = current_user.matchers
   end
   
+  def search
+  @q = User.ransack(params[:q])
+  @users = @q.result(distinct: true)
+  end
+
+
+  def follower
+    if current_user.sex == "男性"
+          @users = current_user.followers.where(activated: true, sex: "女性")
+          @users = Kaminari.paginate_array(@users).page(params[:page]).per(30)
+    elsif current_user.sex == "女性"
+          @users = current_user.followers.where(activated: true, sex: "男性")
+          @users = Kaminari.paginate_array(@users).page(params[:page]).per(30)
+    end
+    render 'follower'
+  end
   
-  #def search
-    # @search_params = user_search_params
-     #@users = User.search(@search_params).includes(:age, :height, :Body_shape, :blood_type, :residence, :Birthplace, :holiday, :Sociability)
-  #end
+  def following
+    if current_user.sex == "男性"
+          @users = current_user.following.where(activated: true, sex: "女性")
+          @users = Kaminari.paginate_array(@users).page(params[:page]).per(30)
+    elsif current_user.sex == "女性"
+          @users = current_user.following.where(activated: true, sex: "男性")
+          @users = Kaminari.paginate_array(@users).page(params[:page]).per(30)
+    end
+    render 'following'
+  end
+  
+  def index
+     if current_user.sex == "男性"
+          @users = User.where(activated: true, sex: "女性")
+          @q = User.ransack(params[:q])
+          @users = @q.result(distinct: true).where(sex: "女性")
+          @users = Kaminari.paginate_array(@users).page(params[:page]).per(30)
+     elsif current_user.sex == "女性"
+          @users = User.where(activated: true, sex: "男性")
+          @q = User.ransack(params[:q])
+          @users = @q.result(distinct: true).where(sex: "男性")
+          @users = Kaminari.paginate_array(@users).page(params[:page]).per(30)
+     end
+
+  end
+  
   
   def personality
     @user = User.find(params[:id])
   end
   
   def new
+    
   end
   
   def show
     @user = User.find(params[:id])
-   # @microposts = @user.microposts.paginate(page: params[:page])
-
+    redirect_to root_url and return unless @user.activated?
   end
   
   def create
     @user = User.new(user_params)
-    @user.image = "default_icon.jpg"
     if @user.save
-      log_in @user
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      @user.send_activation_email
+      flash[:info] = "アカウント認証メールを確認して登録を完了してください。"
+      redirect_to root_url
     else
       render 'new'
     end
@@ -47,18 +84,13 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params2)
-       redirect_to @user
+       redirect_to profile_user_path
     else
        render 'edit'
     end
   end
   
  def edit_prf
-    @user = User.find(params[:id])
- end
-  
- 
- def message
     @user = User.find(params[:id])
  end
  
@@ -84,6 +116,10 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
+    end
+    
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
     
    def search_params

@@ -2,7 +2,6 @@
 
 <div class="main-contents">
   <ul>    
-    <li><%= link_to "メールアドレスとパスワードを変更する", edit_user_path %></li>
-    <li><%= link_to "ログアウトする", logout_path, method: :delete %></li>
+    <li><%= button_to "ログアウト", logout_path, url: root_url, method: :delete %></li>
   </ul>
 </div>

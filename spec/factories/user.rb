@@ -6,6 +6,7 @@ FactoryBot.define do
     password_confirmation {"Rails0713"}
     sex { '女性' }
     age { '20' }
+    activated { true }
   end
   
 end

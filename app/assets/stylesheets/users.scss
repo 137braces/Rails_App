@@ -14,11 +14,223 @@ input {
 }
 
 .user_icon {
-  width: 180px;
-  height: 180px;
+  width: 160px;
+  height: 160px;
   border-radius: 100px;
 }
 
-.user_prf {
+.user_icon2 {
+  width: 130px;
+  height: 130px;
+  border-radius: 100px;
+}
+
+.user-icon-location {
+  padding-left: 58px;
+}
+
+.search-name {
   float: right;
+  font-size: 30px;
+  color: #2abdd1;
+  cursor: pointer;
+}
+
+.user-grid {
+  margin-top: 7%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.user-info li {
+  list-style: none;
+  font-weight: bolder;
+  color: #4d4a4f;
+}
+
+.prf_catalog {
+  list-style: none;
+}
+
+.today2 {
+ -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  /* 整える */
+  margin: 1em 0; /* 前後の隙間 */
+  padding-top: 20px; padding-bottom: 20px; padding-right: 35px; padding-left:  35px;
+  font-size: 1.3em; /* フォントサイズ */
+  fonnt-weight: bold;
+  background-color: #11d1b8; /* 背景色 */
+  color: #fff; /* テキストカラー */
+  cursor: pointer; /* カーソルを指マークに */
+  border-radius: 70px; /* 角の丸み */
+  border-color: #11d1b8;
+  border-style: solid;
+  border-width: 0.15em;
+  transition: 0.7s; /* ホバーの変化を滑らかに */
+}
+
+.today2:hover {
+  background-color: #0a75c7;
+  border-color: #fff;
+  color: #fff;
+}
+
+.edit-profile {
+  width: 100%;
+  padding-top:50px; padding-left:50px; padding-right:50px; padding-bottom:100px;
+  z-index:10;
+  border-style: solid; border-width: 1px; border-color:#d6d6d4;
+}
+
+
+
+.UsersChangeColor {
+ background: rgba(0,0,0,0.9);
+}
+
+.view-prf {
+  margin-top:10px; font-size:3em; color:#3babd1; cursor:pointer;
+}
+
+.view-prf :hover {
+  color: #0a75c7;
+}
+
+.prf-list li {
+  list-style: none;
+}
+
+.prf-list-screen {
+  margin-top: 50px;
+}
+
+.w-25 {
+  width: 25% !important;
+}
+
+.user-info-2 {
+  padding-bottom: 30px;
+  padding-left: 200px;
+}
+
+.user_icon4 {
+  width: 75px;
+  height: 75px;
+  border-radius: 100px;
+  position: absolute;
+  
+}
+
+.user-info-2 li {
+  list-style: none;
+  font-weight: bolder;
+  color: #4d4a4f;
+  font-size: 1px;
+}
+
+@media screen and (max-width: 1024px) {
+
+.user_icon {
+  width: 120px;
+  height: 120px;
+  border-radius: 100px;
+}
+}
+
+@media screen and (max-width: 767px) {
+ .user_icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 100px;
+}
+}
+
+.user-contents {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  background: #fff;
+  width: 350px;
+  height: 500px;
+  border-radius: 100px;
+}
+
+.user-info-3  {
+ margin-top: 50px;
+}
+
+.user-info-3 p {
+  list-style: none;
+  font-weight: bolder;
+  color: #4d4a4f;
+  text-align:center;
+}
+
+.user_icon5 {
+  width: 180px;
+  height: 180px;
+  border-radius: 100px;
+  margin-top: 50px;
+  margin-left: 25%;
+}
+
+.search-users {
+  position: absolute;
+  z-index: 1;
+  left: 80px;
+  background:rgba(0,0,0,0.8);
+  padding:100px;
+  width: 500px;
+  margin-bottom:100px;
+  border-radius:20px;
+  color: #fff;
+  font-size: 20px;
+}
+
+.cross-icon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size:30px;
+  color:black;
+}
+
+
+@media screen and (max-width: 1024px) {
+ .search-users {
+  position: absolute;
+  z-index: 1;
+  left: 10px;
+  background:rgba(0,0,0,0.8);
+  padding:100px;
+  width: 500px;
+  border-radius:20px;
+}
+}
+
+@media screen and (max-width: 800px) {
+ .search-users {
+  position: absolute;
+  z-index: 1;
+  left: -50px;
+  background:rgba(0,0,0,0.8);
+  padding:50px;
+  width: 400px;
+  border-radius:20px;
+}
+}
+
+.active-prf {
+  z-index:1;
+
+  /*　画面全体を覆う設定　*/
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:rgba(0,0,0,0.5);
 }

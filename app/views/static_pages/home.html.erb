@@ -1,26 +1,28 @@
 <header class="navbar">
-  <div class="container logo">
-  <nav>
-   <i class="fas fa-gem fa-2x"></i><%= link_to ' RailsApp', '#',{style: "font-size:2.2em; padding-right:2em;"} %>
-    <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to '新規登録', '/users/new' %></li>
-      <li style="padding-left:15px;"><%= link_to 'ログインする', '/sessions/new',{class: "btn btn--signup"} %></li>
-    </ul>
-  </nav>
-  </div>
+    <div class="container logo">
+         <nav>
+            <i class="fas fa-gem fa-2x"></i><%= link_to ' RailsApp', '#',{style: "font-size:2.2em; padding-right:2em;"} %>
+                <ul class="nav navbar-nav navbar-right">
+                  <li><%= link_to '新規登録', '/users/new' %></li>
+                  <li style="padding-left:15px;"><%= link_to 'ログインする', '/sessions/new',{class: "btn btn--signup"} %></li>
+                </ul>
+          </nav>
+        <%= render 'shared/info_messages' %>
+     </div>
 </header>
     
 <div class="small-heading", style="text-align: center; font-weight: bolder; font-size: 40px;">
-   <div style="color: #14305c;">    
-      <p>マッチングアプリで</p>
-      <p style="padding-top: 1%;">人生のパートナーを見つけよう</p>
-   </div>
+       <div style="color: #14305c;">    
+          <p>マッチングアプリで</p>
+          <p style="padding-top: 1%;">人生のパートナーを見つけよう</p>
+       </div>
+       
    <i class="far fa-heart fa-heart2"></i>
-      <a href="" class="btn btn--signup2">今すぐはじめる</a>
 </div>
 
-
-        <%= link_to "Googleでログイン", "/auth/google_oauth2", method: :post %>
+<div class="button-contents">
+    <div><%= button_to 'ゲストログイン', guest_sessions_path, method: :post,class: "today shadow" %></div>
+</div>
 
    
 

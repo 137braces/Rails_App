@@ -1,3 +1,7 @@
+.static_pages {
+  background: #fcf7f8;
+}
+
 .small-heading {
   margin-top: 8%; 
 }
@@ -21,27 +25,38 @@ a.btn--signup {
   font-size: 16px;
 }
 
-.btn--signup:hover,
-a.btn--signup:hover {
-  color: #fff;
-  background: #3098ba;
-  transition: 1.0s ;
+
+.today {
+ -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  /* 整える */
+  margin: 1em 0; /* 前後の隙間 */
+  padding-top: 27px;
+  padding-bottom: 27px;
+  padding-right: 60px;
+  padding-left:  60px;
+  font-size: 1.5em; /* フォントサイズ */
+  fonnt-weight: bold;
+  background-color: #1aa1ff; /* 背景色 */
+  color: #fff; /* テキストカラー */
+  cursor: pointer; /* カーソルを指マークに */
+  border-radius: 10px; /* 角の丸み */
+  border-color: #1aa1ff;
+  border-style: solid;
+  border-width: 0.15em;
+  transition: 0.7s; /* ホバーの変化を滑らかに */
 }
 
-.btn--signup2,
-a.btn--signup2 {
-  margin-top: 3%;
+.today:hover {
+  background-color: #0a75c7;
+  border-color: #fff;
   color: #fff;
-  font-weight: bolder;
-  background-color: #03b1fc;
-  /* 上 | 右 | 下 | 左 */
-  padding: 1em 4em 1em 4em;
-  font-size: 16px;
 }
 
-.btn--signup2:hover,
-a.btn--signup2:hover {
-  color: #fff;
-  background: #3098ba;
-  transition: 1.0s ;
+.button-contents {
+  margin-top: 2%;    
+  display: flex;
+  justify-content: center;
 }

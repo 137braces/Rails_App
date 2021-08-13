@@ -1,15 +1,20 @@
+<div id="app-link">
 <div class="side">
+    
     <div style="margin-top:7%;">
-      <i class="fas fa-gem fa-2x"></i><%= link_to ' RailsApp', '#',{style: "font-size:2.2em; padding-right:2em;"} %>
+      
+      <div class="title-gem"><a href="/" class="fas fa-gem fa-xs">RailsApp</a></div>
+    
     </div>
     <div class="container wrapper fixed-bottom">
           <ul class="row item-bar">
                 <li><%= link_to "　さがす", index_path(current_user), {class: "fas fa-search"} %></li>
-                <li><%= link_to "　メッセージ", message_path(current_user), {class: "fas fa-comment"} %></li>  
-                <li><%= link_to "　お相手から", from_opponent_path(current_user), {class: "fas fa-heart"} %></li>  
-                <li><%= link_to "　プロフィール", profile_user_path, {class: "fas fa-user"} %></li>
-                <li><%= link_to "　足あと", foot_print_path(current_user), {class: "fas fa-paw"} %></li>
-                <li><%= link_to "　つぶやき", tweet_path(current_user), {class: "fas fa-paw"} %></li>
+                <li><%= link_to "　メッセージ", index_room_path(current_user), {class: "fas fa-comment"} %></li>
+                <li><%= link_to "　マッチング", match_path(current_user), {class: "fas fa-globe"} %></li>
+                <li><%= link_to "　お相手から", follower_path(current_user), {class: "fas fa-heart"} %></li>  
+                <li><%= link_to "　プロフィール", profile_user_path(current_user), {class: "fas fa-user"} %></li>
+                <%#= link_to "　足あと", foot_print_path(current_user), {class: "fas fa-paw"} %>
+                <%#= link_to "　つぶやき", tweet_path(current_user), {class: "fas fa-paw"} %>
                 <li><%= link_to "　設定", setting_path, {class: "fas fa-cog"} %></li>
           </ul>
     </div>
@@ -18,7 +23,42 @@
   <%= yield %>
 </div>
 
-          
+</div>
+<script>
+        new Vue({
+            el: '#app-link',
+            data: {
+                isBlue: false,
+            },
+            methods: {
+                        linkA: function () {
+                            this.linkA = true
+                        },
+                        link: function () {
+                            this.linkB = true
+                        },
+                        link: function () {
+                            this.linkC = true
+                        },
+                        clickA: function () {
+                            this.linkD = true
+                        },
+                        clickA: function () {
+                            this.linkE = true
+                        },
+                        clickA: function () {
+                            this.linkF = true
+                        },
+                        clickA: function () {
+                            this.linkG = true
+                        },
+                        clickA: function () {
+                            this.linkH = true
+                        }
+                    }
+            
+        });
+</script>
           
 
 

@@ -1,0 +1,20 @@
+<%= render 'users/left_partial' %>
+
+<div class="main-contents">
+<p style="font-size:2em; font-weight:bolder;">いいね！したお相手</p>
+<div class="fas fa-search search-name" id="search-form"></div>
+
+  <div class="user-grid">
+      <% @users.each do |user| %>
+        <ul class="user-info">
+          <li style="margin-left:41px;"><%= image_tag user.image.url, class: "user_icon" %></li>
+          <li><p style= text-align:center;><%= user.name %></p></li>
+        </ul>
+        <% end %>
+        <%#= link_to user.image, user %>
+    
+      <%= paginate @users %>
+  </div>
+
+
+</div>

@@ -1,12 +1,21 @@
 class User < ApplicationRecord
+  has_many :messages
+  has_many :entries
+  has_many :rooms, through: :entries
   has_many :active_relationships, class_name:  "Relationship", foreign_key: "follower_id", dependent:   :destroy
+  has_many :passive_relationships, class_name:  "Relationship", foreign_key: "followed_id", dependent:   :destroy
   has_many :following, through: :active_relationships, source: :followed
-  attr_accessor :remember_token
+  has_many :followers, through: :passive_relationships, source: :follower
+  
+  
+  attr_accessor :remember_token, :activation_token
+  before_save   :downcase_email
+  before_create :create_activation_digest
   
   mount_uploader :image, ImageUploader
   
   #ユーザー名は２文字以上、10文字以下
-  validates :name,  presence: true, length: {maximum: 10}
+  validates :name,  presence: true, length: {maximum: 30}
   
   #『メールアドレス関連』
   before_save { self.email = email.downcase } #認証前に全ての文字を小文字に変換
@@ -21,6 +30,7 @@ class User < ApplicationRecord
   validates :password, presence: true,
   format: { with: VALID_PASSWORD_REGEX }, allow_nil: true
   
+  validates :age,  presence: true
   
   enum sex: { 男性: 0, 女性: 1 }
   validates :sex,
@@ -45,12 +55,59 @@ class User < ApplicationRecord
   end
   
   def authenticated?(remember_token)
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
   end
   
   def forget
     update_attribute(:remember_digest, nil)
   end
+  
+  
+  # アカウントを有効にする
+  def activate
+    update_columns(activated: FILL_IN, activated_at: FILL_IN)
+  end
+
+  # 有効化用のメールを送信する
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+  
+  # ユーザーをフォローする
+  def follow(other_user)
+    following << other_user
+  end
+
+  # ユーザーをフォロー解除する
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  # 現在のユーザーがフォローしてたらtrueを返す
+  def following?(other_user)
+    following.include?(other_user)
+  end
+  
+  def matchers
+    following & followers
+  end
+  
+
+  private
+
+    # メールアドレスをすべて小文字にする
+    def downcase_email
+      self.email = email.downcase
+    end
+
+    # 有効化トークンとダイジェストを作成および代入する
+    def create_activation_digest
+      self.activation_token  = User.new_token
+      self.activation_digest = User.digest(activation_token)
+    end
+  
   
   enum Body_shape: { スリム: 0, やや細め: 1, 普通: 2, グラマー: 3, 筋肉質:4, ややぽっちゃり:5, ぽっちゃり:6 }, _prefix: true
   
@@ -81,5 +138,17 @@ class User < ApplicationRecord
                     
   enum holiday: {土日: 0, 平日: 1, 不定期: 2, その他: 3 }, _prefix: true
   
+private
+
+    # メールアドレスをすべて小文字にする
+    def downcase_email
+      self.email = email.downcase
+    end
+
+    # 有効化トークンとダイジェストを作成および代入する
+    def create_activation_digest
+      self.activation_token  = User.new_token
+      self.activation_digest = User.digest(activation_token)
+    end
 
 end

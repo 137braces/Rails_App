@@ -5,3 +5,50 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# 追加のユーザーをまとめて生成する
+
+User.create!(name:  "青木 駿太",
+             email: "hayata@railstutorial.org",
+             password:              "Apple0713",
+             password_confirmation: "Apple0713",
+             age: 23,
+             sex: 0,
+             residence: 26,
+             admin:     true,
+             activated: true,
+             activated_at: Time.zone.now)
+             
+User.create!(name:  "ゲスト様",
+             email: "guest@example.com",
+             password:              "Apple0713",
+             password_confirmation: "Apple0713",
+             age: 33,
+             sex: 0,
+             residence: 27,
+             admin:     true,
+             activated: true,
+             activated_at: Time.zone.now)
+
+99.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  password = "Apple0713"
+  User.create!(name:  name,
+              email: email,
+              password:              password,
+              password_confirmation: password,
+              age: 23,
+              sex: 1,
+              residence: 26,
+              activated: true,
+              activated_at: Time.zone.now)
+end
+
+
+users = User.all
+user  = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
