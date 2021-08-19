@@ -30,6 +30,7 @@ gem 'carrierwave'
 gem 'font-awesome-sass'
 gem 'ransack'
 gem 'kaminari'
+gem 'ancestry'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

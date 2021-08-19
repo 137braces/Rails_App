@@ -1,18 +1,33 @@
-  <% @messages.each do |message| %>
-  
-     <% if message == nil %>
-        <h4 style="text-align:center;">メッセージはまだありません</h4>
-     <% end %>
-      <p class="<%= message.id %>" style= "color: #fff; margin-top: 0;">
-          <%= message.user.name %>
-      </p>
-      <p class="<%= message.id %>">
-          <span class="balloon1-top">
-              <h7 class="dm_content"><%= message.content %></h7><br>
-              <h7 style="color: #C0C0C0;"><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></h7>
-          </span>
-      </p><br>
+<% if @messages.present? %>
+  <% @messages.each do |m| %>
+  <% end %>
+<% else %>
+  <h3 class="text-center">メッセージはまだありません</h3>
+<% end %>
 
+<% @messages.each do |message| %>
+<% if message.user == current_user %>
+<div class="message-style">
+<p class="<%= message.id %>">
+    <span class="balloon1-top">
+        <h7 class="dm_content"><%= message.content %></h7><br>
+    </span>
+</p>
+<h7><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></h7>
+</div>
+
+<% else %>
+<div class="other-message-style">
+<p class="<%= message.id %>">
+    <span class="balloon1-top">
+        <h7 class="dm_content"><%= message.content %></h7><br>
+    </span>
+</p>
+<h7><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></h7>
+</div>
+<% end %>
+
+<br>
 
 <script>
     //メッセージのユーザーidを取ってくる
@@ -22,11 +37,8 @@
     //dm_userのdata-idを取得する
     var current_user = dm_user.getAttribute('data-id')
     //dm_userがログインユーザーであれば右に表示する
-    if(message == current_user){
-      $('p.' + <%= message.id %>).css('text-align', 'right');
-    }else{
-      $('p.' + <%= message.id %>).css('text-align', 'left');
-    }
+    
+    
 </script>
 
 <% end %>

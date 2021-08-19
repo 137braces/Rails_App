@@ -7,14 +7,12 @@
   <div class="user-grid">
       <% @users.each do |user| %>
         <ul class="user-info">
-          <%  @user.following?(user) %>
+          <%  current_user.following?(user) %>
           <li style="margin-left:41px;"><%= image_tag user.image.url, class: "user_icon" %></li>
           <li><p style= text-align:center;><%= user.name %></p></li>
+            <%= render 'follow_form' if logged_in? %>
         </ul>
         <% end %>
-        <%#= link_to user.image, user %>
-    
-      <%= paginate @users %>
   </div>
 
 

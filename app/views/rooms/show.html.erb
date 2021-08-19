@@ -1,6 +1,6 @@
 <%= render 'users/left_partial' %>
      <div class="main-contents">
-         <div class="message-contents">
+         <div class="message-contents" id="app-messages">
         <div style="margin-left:1%;">
             <% @entries.includes([:user]).each do |e| %>
                <!-- eachで回したentryユーザーがログインユーザーであれば、@classに"current_user"の文字列を代入する。ログインユーザーであれば、空白を代入する -->
@@ -17,6 +17,7 @@
                 <%= render "messages/message" %>
             </div>
         </div>
+        
      </div>
         
      <div class "form-in-room">
@@ -25,6 +26,7 @@
                   <%= f.label :content,"新規メッセージを作成"  %>
                   <%= f.text_area :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
                   <%= f.hidden_field :room_id, value: @room.id %>
+            <%= f.submit '送信' %>
             <% end %>
         </div>
      </div>

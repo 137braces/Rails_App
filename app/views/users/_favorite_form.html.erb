@@ -1,0 +1,11 @@
+<% if current_user.following?(user) %>
+    <%= form_with(model: current_user.active_relationships.find_by(followed_id: user.id),
+          html: { method: :delete }, remote: true) do |f| %>
+         <%= f.submit "いいね！を解除", class: "detail-user-button2" ,style: "width:130px;" %>
+      <% end %>
+  <% else %>
+      <%= form_with(model: current_user.active_relationships.build, remote: true) do |f| %>
+          <div><%= hidden_field_tag :followed_id, user.id %></div>
+         <%= f.submit "いいね！を送信", class: "detail-user-button2" ,style: "width:130px;" %>
+      <% end %>
+<% end %>

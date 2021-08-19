@@ -1,0 +1,71 @@
+<%= render 'users/left_partial' %>
+    <div class="main-contents">
+        
+        <div id="tabContents">
+            <div class="item-bar3">
+                <p v-on:click="change('A')" v-bind:class="{'active': isActive === 'A'}">マッチング中</p>
+                <p v-on:click="change('B')" v-bind:class="{'active': isActive === 'B'}">お相手から</p>
+            </div>
+        
+      
+        
+        <div v-if="isActive === 'A'" style="border-top-style: solid; border-width:1px; border-color:#ebeef2;">
+            <% @users.each do |user| %>
+            <%= link_to send_message_path(user), style: "cursor:default;", method: :post do %>
+            <div style="margin-left:41px; margin-top:10px;"><%= image_tag user.image.url, class: "user_icon4" %></div>
+                <ul class="user-info-2">
+                    <li><p><%= user.name %></p></li>
+                    <li><p><%= user.age %>歳 <%= user.residence %></p></li>
+                </ul>
+            <div class="button-contents-msg">
+                <%= link_to 'プロフィール詳細', send_message_path(user), method: :post, class: "detail-user-button shadow" %>
+            </div>
+        <% end %>
+        <% end %>
+        </div>
+    
+    
+    
+        <div v-else-if="isActive === 'B'" style="overflow: hidden; border-top-style: solid; border-width:1px; border-color:#ebeef2;">
+            <% @followerUsers.each do |user| %>
+            <div style="margin-left:41px; margin-top:10px;"><%= image_tag user.image.url, class: "user_icon4" %></div>
+                <ul class="user-info-2">
+                    <li><p><%= user.name %></p></li>
+                    <li><p><%= user.age %>歳 <%= user.residence %></p></li>
+                </ul>
+            <div class="button-contents-msg2">
+                <div id="favorite_form">
+                <% if current_user.following?(user) %>
+                    <%= form_with(model: current_user.active_relationships.find_by(followed_id: user.id),
+                          html: { method: :delete }, remote: true) do |f| %>
+                         <%= f.submit "いいね！を解除", class: "detail-user-button2" ,style: "width:130px;" %>
+                      <% end %>
+                  <% else %>
+                      <%= form_with(model: current_user.active_relationships.build, remote: true) do |f| %>
+                          <div><%= hidden_field_tag :followed_id, user.id %></div>
+                         <%= f.submit "いいね！を送信", class: "detail-user-button2" ,style: "width:130px; background:#29f2bd;" , onMouseOver: "this.style.background='#3ad6a2'", onMouseOut: "this.style.background='#29f2bd'" %>
+                      <% end %>
+                <% end %>
+                </div>
+                
+            </div>
+        <% end %>
+        </div>
+ 
+      </div>
+      
+    </div>
+    
+<script>
+new Vue({
+  el: '#tabContents',
+  data: {
+    isActive: 'A'
+  },
+  methods: {
+    change: function(num){
+      this.isActive = num
+    }
+  }
+})
+</script>

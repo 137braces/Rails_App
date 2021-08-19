@@ -1,7 +1,4 @@
-    <button class="today2" v-on:click="click">プロフィールを編集</button>
-          <div v-show="checkflg" style="margin-left:0%; border-top-style: solid; border-color:#dcdee0;">
-              
-          <div class="col-xs-12"style="margin-top:3%;">
+<div class="col-xs-12"style="margin-top:3%; overflow:hidden;">
     <p style="font-size:1.3em; font-weight:bold;">Railsプロフィール</p>
             <%= form_with(model: @user, local: true) do |f| %>
         
@@ -29,26 +26,12 @@
               <%= f.label :work, "職業"  %>
               <%= f.select :work, User.works.keys,{}, class: "form-control" %>
               
-              <%= link_to "ユーザー", personality_user_path(current_user) %>
-              
               <%= f.submit "保存する",url: profile_user_path , class: "btn btn-primary" %>
             <% end %>
-          </div>
-      </div>
+            
+            
+</div>
+
       
    
-   <script>
-        new Vue({
-            el: '#app-1',
-            data: {
-                checkflg : false,
-                isActive:true
-            },
-            methods: {
-                        click: function () {
-                            this.checkflg == true ? this.checkflg = false : this.checkflg = true
-                        }
-                    }
-            
-        });
-   </script>
+   

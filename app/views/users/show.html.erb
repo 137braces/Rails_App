@@ -1,33 +1,64 @@
 <%= render 'users/left_partial' %>
-    <div class="main-contents">
-        <%= render 'shared/success_messages' %>
-
-        <ul class ="prf-list">
-            <div>
-            <% if @user.image? %>
-                <%= image_tag @user.image.url, class: "user_icon2" %>
-            <% else %>
-                <%= image_tag "default_icon.jpg", class: "user_icon2" %>
-            <% end %>
-            </div>
+  <div id="app-1" v-cloak>    
+      <div class="main-contents">
+         <div style="margin-left:20px;"> 
+          
+          <div v-if="isActive === 'A'">
+              <div class="icon-prf">
+                 <% if @user.image? %>
+                    <%= image_tag @user.image.url, class: "user_icon2" %>
+                <% else %>
+                    <%= image_tag "default_icon.jpg", class: "user_icon2" %>
+                <% end %>
+              </div>
+              <p style="text-align:center;">web designer</p>
+                <p style="text-align:center;">Text.app is a simple text editor for Chrome OS and Chrome. It's fast, lets you open multiple files at once, has syntax highlighting, and saves to Google Drive on Chrome OS.</p>
+          </div>
             
-            <%= render 'follow_form' %>
-        　　<div class ="prf-list-screen">
-            <p style="font-size:1.3em; font-weight:bold;">基本プロフィール</p>
-                <li>ニックネーム<span style="padding-left:73.5px;"><%= @user.name %></span></li>
-                <li>年齢<span style="padding-left:130px;"><%= @user.age %>歳</span></li>
-                <li>居住地<span style="padding-left:116px;"><%= @user.residence %></span></li>
-                <li>出身地<span style="padding-left:116px;"><%= @user.Birthplace %></span><li>
-                <li>血液型<span style="padding-left:116px;"><%= @user.blood_type %></span><li>
-        </ul>
+          <div v-else-if="isActive === 'B'">
+                
+          </div>
         
-        <ul class="prf-list">
-            <p style="font-size:1.3em; font-weight:bold;">詳細プロフィール</p>    
-                <li>仕事<span style="padding-left:125px;"><%= @user.work %></span></li>
-                <li>身長<span style="padding-left:125px;"><%= @user.height %></span></li>
-                <li>体型<span style="padding-left:125px;"><%= @user.Body_shape %></span></li>
-                <li>休日<span style="padding-left:125px;"><%= @user.holiday %></span></li>
-        </ul>
-        
-        </div>
+          <div v-else-if="isActive === 'C'">  
+             <%= render 'users/edit_prf'%>
+          </div>
+          
+          
+      </div>
+      
+      
+     </div>
+     <div class="header-menu-prf" style="margin-left:29%;">
+     <ul class="icon-prf2">
+              <li v-on:click="change('A')" v-bind:class="{'active': isActive === 'A'}">
+              <i v-bind:class="{'active': isActive === 'A'}" class="fas fa-street-view fa-4x"></i>
+              <p v-bind:class="{'active': isActive === 'A'}" style="text-align: center;">Intro</p>
+              </li>
+              
+              <li v-on:click="change('B')" v-bind:class="{'active': isActive === 'B'}" style="margin-left:20%;">
+              <i v-bind:class="{'active': isActive === 'B'}" class="fas fa-id-card fa-4x"></i>
+              <p v-bind:class="{'active': isActive === 'B'}" style="text-align: center;">Profile</p>
+              </li>
+              
+              <li v-on:click="change('C')" v-bind:class="{'active': isActive === 'C'}" style="margin-left:20%;">
+              <i v-bind:class="{'active': isActive === 'C'}" class="fas fa-edit fa-4x"></i>
+              <p v-bind:class="{'active': isActive === 'C'}" style="text-align: center; padding-right:10px;">Edit</p>
+              </li>
+          </ul>
     </div>
+  </div>
+<script>
+new Vue({
+  el: '#app-1',
+  data: {
+    isActive: 'A'
+  },
+  methods: {
+    change: function(num){
+      this.isActive = num
+    }
+  }
+})
+</script>
+
+

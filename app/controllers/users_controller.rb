@@ -3,36 +3,14 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
   
-  def match
-    @users = current_user.matchers
+  def favorite
+    @user = User.find(params[:id])
   end
   
-  def search
-  @q = User.ransack(params[:q])
-  @users = @q.result(distinct: true)
-  end
-
-
-  def follower
-    if current_user.sex == "男性"
-          @users = current_user.followers.where(activated: true, sex: "女性")
-          @users = Kaminari.paginate_array(@users).page(params[:page]).per(30)
-    elsif current_user.sex == "女性"
-          @users = current_user.followers.where(activated: true, sex: "男性")
-          @users = Kaminari.paginate_array(@users).page(params[:page]).per(30)
-    end
-    render 'follower'
-  end
-  
-  def following
-    if current_user.sex == "男性"
-          @users = current_user.following.where(activated: true, sex: "女性")
-          @users = Kaminari.paginate_array(@users).page(params[:page]).per(30)
-    elsif current_user.sex == "女性"
-          @users = current_user.following.where(activated: true, sex: "男性")
-          @users = Kaminari.paginate_array(@users).page(params[:page]).per(30)
-    end
-    render 'following'
+  def matcher
+    @user = User.find(params[:id])
+    @users = @user.matchers
+    @followerUsers = @user.followers
   end
   
   def index
@@ -48,11 +26,6 @@ class UsersController < ApplicationController
           @users = Kaminari.paginate_array(@users).page(params[:page]).per(30)
      end
 
-  end
-  
-  
-  def personality
-    @user = User.find(params[:id])
   end
   
   def new
@@ -98,9 +71,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
  end
  
- def from_opponent
-    @user = User.find(params[:id])
- end
   #許可された値のみ取得{名前,メールアドレス,パスワード,パスワードの確認}
   private
     
@@ -125,4 +95,5 @@ class UsersController < ApplicationController
    def search_params
       params.require(:q).permit!
    end
+   
 end

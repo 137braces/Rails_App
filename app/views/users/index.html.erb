@@ -1,11 +1,17 @@
-<div id="app-users">
+<style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+
+<div id="app-users" v-cloak>
 <%= render 'users/left_partial' %>
 <div class="main-contents">
     <p style="font-size:2em; font-weight:bolder;">さがす</p>
       
           <div v-on:click="openModal"  class="fas fa-search search-name" id="search-form">
           </div>
-              <div v-cloak v-show="searchC" class="search-users">
+              <div v-show="searchC" class="search-users">
                   <button v-on:click="closeModal" class="fas fa-times cross-icon"></button>
                   <div class="search-wrapper">
                     <%= render 'users/search' %>
@@ -13,50 +19,32 @@
               </div>
           
           
-         <div class="user-grid" style="margin-left:41px;">
+         <div class="user-grid " style="margin-left:41px;">
              <% @users.each do |user| %>
+                 <%= link_to favorite_path(user), style: "cursor:default;", method: :post do %>
                     <ul class="user-info">
-                      <div v-on:click="activePrf"><%= image_tag user.image.url, class: "user_icon" %></div>
-                      <li><p style="text-align:left;;"><%= user.age %>歳 <%= user.residence %></p></li>
+                      <div><%= image_tag user.image.url, class: "user_icon" %></div>
+                          <li><p style="text-align:left;"><%= user.name[0, 5] + '...' %> <%= user.age %>歳 <%= user.residence %></p></li>
                     </ul>
-             <% @user = user %> 
-
-              <%#= link_to user.image, user %>
+                 <% end %>
+                     
             <% end %>
+            
             <%= paginate @users %>
+            
+            
          </div>
          
      </div>
-     
-     <div v-show="isModalActive" class="active-prf">
-         <div class="user-contents"> 
-    <div><%= image_tag @user.image.url, class: "user_icon5" %></div>
-    <div class="user-info-3">
-          <p><%= @user.name %></p>
-          <p><%= @user.residence %></p>
-          <p><%= @user.age %>歳</p>
-    </div>
-    <%= form_with(model: current_user.active_relationships.build, remote: true) do |f| %>
-      <div><%= hidden_field_tag :followed_id, @user.id %></div>
-         <%= f.submit "Follow", class: "btn btn-primary" %>
-      <% end %>
-     </div>
-     
 </div>
 
-<style>
-    [v-cloak] {
-      display: none;
-    }
-  </style> 
   
 <script>
         new Vue({
             el: '#app-users',
             data: {
-                isModalActive : false,
-                searchC : false
-                
+                searchC : false,
+                html : false
             },
             methods: {
                         openModal: function () {
@@ -64,9 +52,6 @@
                         },
                         closeModal: function () {
                             this.searchC = false
-                        },
-                        activePrf: function () {
-                            this.isModalActive = true
                         }
                         
                      }
