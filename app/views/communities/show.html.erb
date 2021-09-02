@@ -2,8 +2,71 @@
 <div id="community" v-cloak>    
     <div class="main-contents">
         <div style="margin-left:20px;">
+            <form class="community_search" id="community_search" action="/communities" accept-charset="UTF-8" method="get">
+              <div class="row">
+                  <div class="col-xs-8">
+                  <input placeholder="search" class="input-lg" type="search" name="q[name_cont]" id="q_name_cont" v-model="textbox" />
+                  </div>
+              </div>
+            </form> 
             <h2 style="font-weight:bold;">コミュニティ</h2>
-          
+            
         </div>
-</div>
+        <br>
+        <h3 style="font-weight:bold; margin-left:20px;">おすすめ</h3>
+        <br>
+        <h3 style="font-weight:bold; margin-left:20px;">カテゴリー</h3>
+        <div class="community-grid " style="margin-left:41px;">
+             <div class="community-info">
+                 <div><%= link_to image_tag('game.jpg', class: "community_icon"), game_path(current_user)  %></div>
+                 <p>ゲーム</p>
+             </div>
+             <div class="community-info"> 
+                 <div><%= link_to  image_tag('music.jpg', class: "community_icon"), music_path(current_user)  %></div>
+                 <p>音楽</p>
+             </div>
+             <div class="community-info">
+                 <div><%= link_to image_tag('love.jpg', class: "community_icon"), love_path(current_user) %></div>
+                 <p>恋愛・結婚</p>
+             </div>
+             <div class="community-info">
+                 <div><%= link_to image_tag('health.jpg', class: "community_icon"), health_path(current_user) %></div>
+                 <p>美容・健康</p>
+             </div>
+             <div class="community-info">
+                 <div><%= link_to image_tag('work', class: "community_icon"), work_path(current_user) %></div>
+                 <p>仕事</p>
+             </div>
+             <div class="community-info">
+                 <div><%= link_to image_tag('animal.jpg', class: "community_icon"), animal_path(current_user)  %></div>
+                 <p>ペット・動物</p>
+             </div>
+             <div class="community-info">
+                 <div><%= link_to image_tag('sport.jpg', class: "community_icon"), sport_path(current_user) %></div>
+                 <p>スポーツ</p>
+             </div>
+             <div class="community-info">
+                 <div><%= link_to image_tag('cafe.jpg', class: "community_icon"), cafe_path(current_user) %></div>
+                 <p>カフェ</p>
+             </div>
+             <div class="community-info">
+                 <div><%= link_to image_tag('art.jpg', class: "community_icon"), art_path(current_user) %></div>
+                 <p>アート</p>
+             </div>
+             <div class="community-info">
+                 <div><%= link_to image_tag('fashion', class: "community_icon"), fashion_path(current_user) %></div>
+                 <p>ファッション</p>
+             </div>
+             <div class="community-info">
+                 <div><%= link_to image_tag('food.jpg', class: "community_icon"), food_path(current_user)  %></div>
+                 <p>フード・お酒</p>
+             </div>
+             <div class="community-info">
+                 <div><%= link_to image_tag('travel.jpg', class: "community_icon"), travel_path(current_user) %></div>
+                 <p>旅行</p>
+             </div>
+        </div>
     </div>
+    
+</div>
+

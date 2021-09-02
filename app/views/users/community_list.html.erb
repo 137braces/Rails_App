@@ -1,0 +1,60 @@
+<%= render 'users/left_partial' %>
+<div id="community-list" v-cloak>    
+      <div class="main-contents">
+          <h4 style="margin-left:20px; color:#505154;"><%= @user.name %>さんの参加コミュニティ</h4>
+          <div class="item-bar3">
+            <p v-on:click="change('A')" v-bind:class="{'active': isActive === 'A'}">趣味</p>
+            <p v-on:click="change('B')" v-bind:class="{'active': isActive === 'B'}">ライフスタイル</p>
+            <p v-on:click="change('C')" v-bind:class="{'active': isActive === 'C'}">価値観</p>
+          </div>
+          
+          <div v-if="isActive === 'A'">
+            <div class="community-grid " style="margin-left:41px; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;">
+              <% @communities.each do |c| %>
+                <div class="community-info">
+                   <%= image_tag c.image, class: "community_icon2"  %>
+                   <p><%= c.name %></p>
+                </div>
+              <% end %>
+            </div>  
+          </div>
+          
+          <div v-else-if="isActive === 'B'">
+            <div class="community-grid " style="margin-left:41px; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;">
+              <% @communities2.each do |c| %>
+                <div class="community-info">
+                   <%= image_tag c.image, class: "community_icon2"  %>
+                   <p><%= c.name %></p>
+                </div>
+              <% end %>
+            </div>  
+          </div>
+          
+          <div v-else-if="isActive === 'C'">
+            <div class="community-grid " style="margin-left:41px; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;">
+              <% @communities3.each do |c| %>
+                <div class="community-info">
+                   <%= image_tag c.image, class: "community_icon2"  %>
+                   <p><%= c.name %></p>
+                </div>
+              <% end %>
+            </div>  
+          </div>
+          
+          
+      </div>
+</div>
+
+<script>
+new Vue({
+  el: '#community-list',
+  data: {
+    isActive: 'A'
+  },
+  methods: {
+    change: function(num){
+      this.isActive = num
+    }
+  }
+})
+</script>

@@ -1,7 +1,10 @@
 <div class="col-xs-12"style="margin-top:3%; overflow:hidden;">
     <p style="font-size:1.3em; font-weight:bold;">Railsプロフィール</p>
             <%= form_with(model: @user, local: true) do |f| %>
-        
+              
+              <%= f.label :tweet, "つぶやき" %>
+              <%= f.text_field :tweet %>
+              
               <%= f.label :image, "プロフィール画像" %>
               <%= f.file_field :image %>
               
@@ -26,7 +29,10 @@
               <%= f.label :work, "職業"  %>
               <%= f.select :work, User.works.keys,{}, class: "form-control" %>
               
-              <%= f.submit "保存する",url: profile_user_path , class: "btn btn-primary" %>
+              <%= f.label :content, "自己紹介" %>
+              <%= f.text_field :content %>
+              
+              <%= f.submit "保存する", class: "btn btn-primary" %>
             <% end %>
             
             

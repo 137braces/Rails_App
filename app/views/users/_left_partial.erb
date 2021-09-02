@@ -14,7 +14,7 @@
                 <li><%= link_to "　プロフィール", user_path(current_user), {class: "fas fa-user"} %></li>
                 <li><%= link_to "　コミュニティ", community_path(current_user), {class: "fas fa-globe"} %></li>
                 <%#= link_to "　つぶやき", tweet_path(current_user), {class: "fas fa-paw"} %>
-                <li><%= link_to "　設定", setting_path, {class: "fas fa-cog"} %></li>
+                <li><%= link_to "　設定", setting_path(current_user), {class: "fas fa-cog"} %></li>
           </ul>
     </div>
 </div> 

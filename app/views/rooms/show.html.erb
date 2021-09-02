@@ -19,18 +19,23 @@
         </div>
         
      </div>
-        
-     <div class "form-in-room">
-        <div class="form-message"style="">
+     
+    </div>
+     
+     
+        <div class="form-message">
             <%= form_with(model: @message, remote: true) do |f| %>
+                <div>
                   <%= f.label :content,"新規メッセージを作成"  %>
                   <%= f.text_area :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
                   <%= f.hidden_field :room_id, value: @room.id %>
-            <%= f.submit '送信' %>
+                </div>
+            <div style="width:100px; margin-left:80%;">
+            <%= f.submit '送信',class: "detail-user-button", style: "font-size:15px;" %>
             <% end %>
+            </div>
         </div>
-     </div>
-</div>
+     
 <script>
     //トークルーム遷移時に入力フォーム記載場所にスクロールする(最新トークは下にあるため)
     let element = document.getElementById('target'); // 移動させたい位置の要素を取得

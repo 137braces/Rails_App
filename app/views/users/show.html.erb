@@ -11,15 +11,140 @@
                     <%= image_tag "default_icon.jpg", class: "user_icon2" %>
                 <% end %>
               </div>
-              <p style="text-align:center;">web designer</p>
-                <p style="text-align:center;">Text.app is a simple text editor for Chrome OS and Chrome. It's fast, lets you open multiple files at once, has syntax highlighting, and saves to Google Drive on Chrome OS.</p>
+              
+              <p style="text-align:center; margin:20px;"><%= content_tag :span, @user.name, class: "username" %></p>
+              <div style="display:flex; justify-content:center;">
+                <div id="favorite_form">
+                  <% if current_user == @user %>
+                        <span></span>
+                  <% else %>
+                    <% if current_user.following?(@user) %>
+                    <%= form_with(model: current_user.active_relationships.find_by(followed_id: @user.id),
+                          html: { method: :delete }, remote: true) do |f| %>
+                         <%= f.submit "いいね！を解除", id: "no-follow" , class: "detail-user-button2" ,style: "width:130px;" %>
+                    <% end %>
+                    
+                    <br>
+                   <%= link_to 'メッセージルームを作成', send_message_path(@user), method: :get, class: "detail-user-button shadow" ,id: "send_message-s" %>
+                    
+                    <% else %>
+                    <%= form_with(model: current_user.active_relationships.build, remote: true) do |f| %>
+                        <div><%= hidden_field_tag :followed_id, @user.id %></div>
+                       <%= f.submit "いいね！を送信",id: "yes-follow" , class: "detail-user-button2" ,style: "width:130px; background:#29f2bd;" , onMouseOver: "this.style.background='#3ad6a2'", onMouseOut: "this.style.background='#29f2bd'" %>
+                    <% end %> 
+                    
+                  <% end %>  
+                  <% end %>
+                
+                </div>
+                
+            </div>
+              
+              
+              <div>
+              <% if @user.tweet.present? %>
+                <% if @user.content == nil %>
+                  <p></p>
+                <% else %>  
+                  <p style="text-align:center;"><%= @user.content[0, 30] + '...' %></p>
+                <% end %>
+              <% else %>
+              <p style="text-align:center;"><%= @user.tweet %></p>
+              <% end %>
+              </div>
+              
+              <div style="border-top: solid 2px #b8b2b2;">
+                <h3 style="font-weight:bold; margin-left:20px;">参加コミュニティ</h3>
+                <% if @user.communities.present? %>
+                <p style="margin-top:40px;text-align:center; font-size:20px; font-weight:bold; text-decoration: none; "><%= link_to "すべてを見る" ,community_list_path %></p>
+                  <div class="table-responsive" style="margin-top:30px;">
+                    <table>
+                    <div class="community-grid " style="margin-left:41px; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;">
+                      <% @user.communities.each do |c| %>
+                        <div class="community-info">
+                           <%= image_tag c.image, class: "community_icon"  %>
+                           <p><%= c.name %></p>
+                        </div>
+                      <% end %>
+                    </div>
+                   </table>
+                  </div>
+                <% else %>
+                  <p style="font-size:2em; font-weight:bold; margin-top:80px; text-align:center;">コミュニティはまだありません</p>
+                  <% if current_user == @user %>
+                     <div class="button-contents">
+                        <div><%= button_to 'コミュニティを探す', community_path, method: :get ,class: "today shadow" %></div>
+                    </div>
+                  <% end %>
+                <% end %>
+                    
+              </div>
           </div>
             
           <div v-else-if="isActive === 'B'">
-                
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">/</th>
+                    <th scope="col">基本プロフィール</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">名前</th>
+                    <td><%= @user.name %></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">年齢</th>
+                    <td><%= @user.age %>歳</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">血液型</th>
+                    <td><%= @user.residence %></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">出身地</th>
+                    <td><%= @user.Birthplace %></td>
+                  </tr>
+                </tbody>
+              </table>
+            
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">/</th>
+                    <th scope="col">プロフィール項目</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">身長</th>
+                    <td><%= @user.height %>cm</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">体型</th>
+                    <td><%= @user.Body_shape %></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">血液型</th>
+                    <td><%= @user.blood_type %></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">職業</th>
+                    <td><%= @user.work %></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">休日</th>
+                    <td><%= @user.holiday %></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h4 style="font-weight:bold; margin-left:5px;">自己紹介文</h3>
+              <p style="text-align:center;"><%= @user.content %></p>
           </div>
-        
-          <div v-else-if="isActive === 'C'">  
+          
+          
+          <div v-else-if="isActive === 'C'">
              <%= render 'users/edit_prf'%>
           </div>
           
@@ -28,23 +153,27 @@
       
       
      </div>
-     <div class="header-menu-prf" style="margin-left:29%;">
-     <ul class="icon-prf2">
-              <li v-on:click="change('A')" v-bind:class="{'active': isActive === 'A'}">
-              <i v-bind:class="{'active': isActive === 'A'}" class="fas fa-street-view fa-4x"></i>
-              <p v-bind:class="{'active': isActive === 'A'}" style="text-align: center;">Intro</p>
-              </li>
-              
-              <li v-on:click="change('B')" v-bind:class="{'active': isActive === 'B'}" style="margin-left:20%;">
-              <i v-bind:class="{'active': isActive === 'B'}" class="fas fa-id-card fa-4x"></i>
-              <p v-bind:class="{'active': isActive === 'B'}" style="text-align: center;">Profile</p>
-              </li>
-              
-              <li v-on:click="change('C')" v-bind:class="{'active': isActive === 'C'}" style="margin-left:20%;">
-              <i v-bind:class="{'active': isActive === 'C'}" class="fas fa-edit fa-4x"></i>
-              <p v-bind:class="{'active': isActive === 'C'}" style="text-align: center; padding-right:10px;">Edit</p>
-              </li>
-          </ul>
+    
+    <div class="header-menu-prf" style="margin-left:29%;">
+      <ul class="icon-prf2">
+          <li v-on:click="change('A')" v-bind:class="{'active': isActive === 'A'}">
+          <i v-bind:class="{'active': isActive === 'A'}" class="fas fa-street-view fa-4x"></i>
+          <p v-bind:class="{'active': isActive === 'A'}" style="text-align: center;">Intro</p>
+          </li>
+          
+          <li v-on:click="change('B')" v-bind:class="{'active': isActive === 'B'}" style="margin-left:20%;">
+          <i v-bind:class="{'active': isActive === 'B'}" class="fas fa-id-card fa-4x"></i>
+          <p v-bind:class="{'active': isActive === 'B'}" style="text-align: center;">Profile</p>
+          </li>
+          
+          <% if current_user == @user %>
+          <li v-on:click="change('C')" v-bind:class="{'active': isActive === 'C'}" style="margin-left:20%;">
+          <i v-bind:class="{'active': isActive === 'C'}" class="fas fa-edit fa-4x"></i>
+          <p v-bind:class="{'active': isActive === 'C'}" style="text-align: center; padding-right:10px;">Edit</p>
+          </li>
+          <% end %>
+          
+      </ul>
     </div>
   </div>
 <script>

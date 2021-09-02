@@ -1,20 +1,22 @@
-<h1>Sign up</h1>
-
-<div class="row">
+<div class="row new-touroku">
+  <h2>　RailsAppの新規登録</h2>
   <div class="col-md-6 col-md-offset-3">
+      <p style="texr-align:center; font-size:19px;">新規登録せずに機能を試したい方はこちら</p>
+      <%= button_to 'ゲストログイン', guest_sessions_path, method: :post,class: "today-new shadow" %>
+    <div class="guest-login">
     <%= form_with(model: @user, local: true) do |f| %>
     <%= render 'shared/error_messages' %>
-      <%= f.label :name, "ニックネーム"  %>
-      <%= f.text_field :name %>
+      <%= f.label :name, "ニックネーム" %>
+      <%= f.text_field :name,:placeholder => "ニックネーム" %>
 
       <%= f.label :email, "メールアドレス" %>
-      <%= f.email_field :email %>
+      <%= f.email_field :email,:placeholder => "メールアドレスを入力" %>
 
       <%= f.label :password, "パスワード" %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password,:placeholder => "パスワードを作成" %>
 
       <%= f.label :password_confirmation, "パスワード確認" %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.password_field :password_confirmation,:placeholder => "パスワードを確認" %>
       
       <%= f.label :sex, "性別" %>
       <%= f.select :sex, User.sexes.keys,{include_blank: '選択してください'}, class: "form-control" %>
@@ -25,5 +27,6 @@
       <%= f.submit "新規作成をする", class: "btn btn-primary" %>
       
     <% end %>
+    </div>
   </div>
 </div>

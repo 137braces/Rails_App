@@ -18,7 +18,7 @@
                     <li><p><%= user.age %>歳 <%= user.residence %></p></li>
                 </ul>
             <div class="button-contents-msg">
-                <%= link_to 'プロフィール詳細', send_message_path(user), method: :post, class: "detail-user-button shadow" %>
+                <%= link_to 'プロフィール詳細', send_message_path(user), method: :get, class: "detail-user-button shadow" %>
             </div>
         <% end %>
         <% end %>
@@ -38,12 +38,12 @@
                 <% if current_user.following?(user) %>
                     <%= form_with(model: current_user.active_relationships.find_by(followed_id: user.id),
                           html: { method: :delete }, remote: true) do |f| %>
-                         <%= f.submit "いいね！を解除", class: "detail-user-button2" ,style: "width:130px;" %>
+                         <%= f.submit "いいね！を解除", class: "detail-user-button2", id: "no-follow" ,style: "width:130px;" %>
                       <% end %>
                   <% else %>
                       <%= form_with(model: current_user.active_relationships.build, remote: true) do |f| %>
                           <div><%= hidden_field_tag :followed_id, user.id %></div>
-                         <%= f.submit "いいね！を送信", class: "detail-user-button2" ,style: "width:130px; background:#29f2bd;" , onMouseOver: "this.style.background='#3ad6a2'", onMouseOut: "this.style.background='#29f2bd'" %>
+                         <%= f.submit "いいね！を送信", class: "detail-user-button2", id: "yes-follow" ,style: "width:130px; background:#29f2bd;" , onMouseOver: "this.style.background='#3ad6a2'", onMouseOut: "this.style.background='#29f2bd'" %>
                       <% end %>
                 <% end %>
                 </div>

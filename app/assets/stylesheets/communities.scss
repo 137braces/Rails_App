@@ -1,3 +1,55 @@
-// Place all the styles related to the Communities controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.community-info p {
+  list-style: none;
+  font-weight: bolder;
+  color: #4d4a4f;
+}
+
+.community-info {
+  overflow-wrap: anywhere;
+}
+
+.community-info p {
+}
+
+.community_icon {
+  width: 130px;
+  height: 130px;
+  border-radius: 20px;
+}
+
+.community_icon2 {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+}
+
+.community-grid {
+  margin-top: 4%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 7px;
+  overflow-wrap: anywhere;
+}
+
+@media screen and (max-width: 1024px) {
+.community-grid {
+  margin-top: 4%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+}
+
+@media screen and (max-width: 767px) {
+ .community-grid {
+  margin-top: 4%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.community_icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+}
+
+}

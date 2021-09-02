@@ -1,63 +1,117 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+User.create!(name:  "青木 駿太", email: "hayata@railstutorial.org",password: "Apple0713", password_confirmation: "Apple0713", age: 23, sex: 0,
+             image: File.open("./app/assets/images/myself.jpg"), residence: 26, blood_type: 1, Birthplace: 20, work: 20, holiday: 3, Housemate: 3, height: 173,
+             content: "はじめまして、プロフィールを見て頂きありがとうございます。真剣な出会いを探そうと、思い切ってペアーズに登録してみました！
+                        【お仕事】
+                        お仕事はWebデザイナーをしており、企業や個人などのクライアントから依頼されたWebサイトのデザインを担当しています。職場の環境や人間関係が良く、デザイナーは将来性もあるため、日々デザインの勉強もしながら楽しくお仕事をさせて頂いています。
+                        【趣味】
+                        趣味は美味しい物を食べたり、ドライブしながら海や山などの綺麗な景色を見に行くのが好きです。あと映画やドラマも家でよく観たりします！
+                        好きな食べ物はお肉・お魚で、仕事の帰りに友人とお酒を飲みながら料理を楽しんだりします。映画やドラマはNetflixで見ることが多く、海外ドラマにハマり過ぎて1日中見ていることもあります。ちなみに最近好きなのはウォーキング・デットのシリーズです！
+                        【オフの過ごし方】
+                        休日は家でゆっくり読書を楽しみ、ドライブが好きなので神社巡りやその近くにある美味しいカフェでまったりと過ごすこともあります！
+                        ペアーズで良い人に出会えた際には、一緒にたくさんお出かけしたり、趣味を共有し合ったりと、お互いを尊重し合える関係になれたら良いなーと思っています。
+                        ゆくゆくはお互いの将来のことも視野に入れて、結婚を考えられる方も探しています。
+                        もし少しでも興味を持って頂けたら、いいねを送っていただけると嬉しいです。", admin: true, activated: true, activated_at: Time.zone.now)
+             
+User.create!(name: "ゆっきー", email: "yukkiy@example.com", password: "Apple0713", password_confirmation: "Apple0713", age: 25, sex: 1,
+             image: File.open("./app/assets/images/woman.jpg"), residence: 27, blood_type: 1, Birthplace: 20, work: 20, holiday: 3, Housemate: 3,
+             height: 163, admin: true,activated: true, activated_at: Time.zone.now)
+User.create!(name:  "葵", email: "aoaoao@example.com", password: "Apple0713", password_confirmation: "Apple0713",
+             age: 20, sex: 1, image: File.open("./app/assets/images/woman1.jpg"), residence: 20, blood_type: 3, Birthplace: 20,
+             work: 40, holiday: 1, Housemate: 2, height: 155, admin: true, activated: true, activated_at: Time.zone.now,
+             tweet: "アニソン好きな人と繋がりたい！")
+             
+User.create!(name:  "あみ", email: "amiami@example.com", password: "Apple0713", password_confirmation: "Apple0713",
+             age: 22, sex: 1, image: File.open("./app/assets/images/woman2.jpg"), residence: 19, blood_type: 3, Birthplace: 19,
+             work: 40, holiday: 3, Housemate: 1, height: 167, admin: true, activated: true, activated_at: Time.zone.now,
+             tweet: "誠実でリードしてくれる男性がタイプです！")
+
+User.create!(name:  "美佐子", email: "isonomisako@example.com", password: "Apple0713", password_confirmation: "Apple0713",
+             age: 25, sex: 1, image: File.open("./app/assets/images/woman3.jpg"), residence: 10, blood_type: 0, Birthplace: 13,
+             work: 13, holiday: 0, Housemate: 4, height: 164, admin: true, activated: true, activated_at: Time.zone.now,
+             tweet: "結婚を前提にお付き合いできる方を探してます！")
+
+User.create!(name:  "Risa", email: "risa@example.com", password: "Apple0713", password_confirmation: "Apple0713",
+             age: 26, sex: 1, image: File.open("./app/assets/images/woman4.jpg"), residence: 27, blood_type: 1, Birthplace: 20,
+             work: 20, holiday: 3, Housemate: 3, height: 163, admin: true, activated: true, activated_at: Time.zone.now,
+             tweet: "カットモデルをしています！")
+
+User.create!(name:  "まり", email: "mari@example.com", password: "Apple0713", password_confirmation: "Apple0713",
+             age: 24, sex: 1, image: File.open("./app/assets/images/woman5.jpg"), residence: 27, blood_type: 1, Birthplace: 12,
+             work: 12, holiday: 3, Housemate: 2, height: 153, admin: true, activated: true, activated_at: Time.zone.now,
+             tweet: "お話ししましょ！")
+
+User.create!(name:  "みなみ", email: "minaminami@example.com", password: "Apple0713", password_confirmation: "Apple0713",
+             age: 25, sex: 1, image: File.open("./app/assets/images/woman6.jpg"), residence: 27, blood_type: 1, Birthplace: 20,
+             work: 20, holiday: 3, Housemate: 3, height: 163, admin: true, activated: true, activated_at: Time.zone.now, 
+             tweet: "クールに見られますが、意外とゲラです")
+
+User.create!(name:  "エマーソン", email: "emasonemason@example.com", password: "Apple0713", password_confirmation: "Apple0713",
+             age: 32, sex: 1, image: File.open("./app/assets/images/woman7.jpg"), residence: 10, blood_type: 2, Birthplace: 22,
+             work: 2, holiday: 0, Housemate: 2, height: 159, admin: true, activated: true, activated_at: Time.zone.now)
 
 # 追加のユーザーをまとめて生成する
+Community.create!(name: "Apex Legends", content: "Apex好きが集まるコミュニティ",image: "apex.jpg", category: 0, genre:0)
 
-User.create!(name:  "青木 駿太",
-             email: "hayata@railstutorial.org",
-             password:              "Apple0713",
-             password_confirmation: "Apple0713",
-             age: 23,
-             sex: 0,
-             residence: 26,
-             admin:     true,
-             activated: true,
-             activated_at: Time.zone.now)
+Community.create!(name: "Youtubeをよく見ます！", content: "Youtube好きが集まるコミュニティ", image: "youtube.jpg", category: 0, genre:1)
 
+Community.create!(name: "Photoshopを使ったことがあります！", content: "Photoshopコミュニティ", image: "photoshop.jpg", category: 1, genre:4)
              
-User.create!(name:  "ゲスト様",
-             email: "guest@example.com",
-             password:              "Apple0713",
-             password_confirmation: "Apple0713",
-             age: 33,
-             sex: 0,
-             residence: 27,
-             admin:     true,
-             activated: true,
-             activated_at: Time.zone.now)
+Community.create!(name: "Reactを実務で使っています！", content: "Reactを使ったことがあるコミュニティ", image: "react.jpg", category: 1,genre:4)
              
-User.create!(name:  "ゆっきー",
-             email: "yukkiy@example.com",
-             password:              "Apple0713",
-             password_confirmation: "Apple0713",
-             age: 25,
-             sex: 0,
-             residence: 27,
-             admin:     true,
-             activated: true,
-             activated_at: Time.zone.now)
+Community.create!(name: "AWSの資格を持っています！", content: "AWSの資格を持っているコミュニティ", image: "aws.jpg", category: 1, genre:4)
+             
+Community.create!(name: "Vue.jsをフロントエンドに使っています！", content: "Vue.jsをフロントエンドに使ったコミュニティ",image: "vue.jpg", category: 1, genre:4)
+
+Community.create!(name: "プログラミング言語に興味があります！", content: "プログラミング言語に興味があるコミュニティ", image: "language-p.jpg", category: 1, genre:4)
+             
+Community.create!(name: "経理・財務を担当していました！", content: "経理・財務担当のコミュニティ", image: "keiri.jpg", category: 1, genre:4)
+             
+Community.create!(name:  "スーツ好き！", content: "スーツ好きのコミュニティ", image: "suit.jpg", category: 1, genre:9)
+             
+Community.create!(name:  "スタバによく行きます！", content: "スタバに良く行く人のコミュニティ", image: "sutaba.jpg", category: 0, genre:7)
+
+Community.create!(name:  "タクシードライバーをしていました！", content: "タクシードライバーのコミュニティ", image: "taxi.jpg", category: 0, genre:4)
+             
+Community.create!(name:  "テニスが好き！", content: "テニス好きのコミュニティ", image: "tennis.jpg", category: 0, genre:6)
+             
+Community.create!(name:  "歳を取ってもずっと一緒", content: "老後も一緒に居たい人向けのコミュニティ", image: "grand-love.jpg",category: 2, genre:2)
+
+Community.create!(name:  "ドラクエが大好き！", content: "", image: "draqe.jpg",category: 0, genre:0)
+Community.create!(name:  "MHW", content: "", image: "monster.jpg",category: 0, genre:0)
+Community.create!(name:  "結婚を前提にお付き合い", content: "", image: "marry.jpg",category: 2, genre:2)
+Community.create!(name:  "綺麗な海を見たい！", content: "", image: "sea.jpg",category: 0, genre:11)
+Community.create!(name:  "カメラ・写真が好き", content: "", image: "camera.jpg",category: 0, genre:11)
+Community.create!(name:  "インスタグラム", content: "", image: "insta.jpg",category: 0, genre:11)
+
+User.create!(name:  "ゲスト様", email: "guest@example.com", password: "Apple0713", password_confirmation: "Apple0713", age: 33, sex: 0,
+             image: File.open("./app/assets/images/guest.jpg"), residence: 27, blood_type: 1, Birthplace: 20,  work: 20, holiday: 3, Housemate: 3,
+             height: 170,
+             content: "はじめまして、プロフィールを見て頂きありがとうございます。真剣な出会いを探そうと、思い切ってペアーズに登録してみました！
+                        【お仕事】
+                        お仕事はWebデザイナーをしており、企業や個人などのクライアントから依頼されたWebサイトのデザインを担当しています。職場の環境や人間関係が良く、デザイナーは将来性もあるため、日々デザインの勉強もしながら楽しくお仕事をさせて頂いています。
+                        【趣味】
+                        趣味は美味しい物を食べたり、ドライブしながら海や山などの綺麗な景色を見に行くのが好きです。あと映画やドラマも家でよく観たりします！
+                        好きな食べ物はお肉・お魚で、仕事の帰りに友人とお酒を飲みながら料理を楽しんだりします。映画やドラマはNetflixで見ることが多く、海外ドラマにハマり過ぎて1日中見ていることもあります。ちなみに最近好きなのはウォーキング・デットのシリーズです！
+                        【オフの過ごし方】
+                        休日は家でゆっくり読書を楽しみ、ドライブが好きなので神社巡りやその近くにある美味しいカフェでまったりと過ごすこともあります！
+                        ペアーズで良い人に出会えた際には、一緒にたくさんお出かけしたり、趣味を共有し合ったりと、お互いを尊重し合える関係になれたら良いなーと思っています！
+                        ゆくゆくはお互いの将来のことも視野に入れて、結婚を考えられる方も探しています。
+                        もし少しでも興味を持って頂けたら、いいねを送っていただけると嬉しいです。", admin: true, activated: true, activated_at: Time.zone.now)
+             
+
 
 99.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "Apple0713"
-  User.create!(name:  name,
-              email: email,
-              password:              password,
-              password_confirmation: password,
-              age: 23,
-              sex: 1,
-              residence: 26,
-              activated: true,
-              activated_at: Time.zone.now)
+  User.create!(name:  name, email: email, password: password, password_confirmation: password, age: 20, sex: 1, residence: 26, blood_type: 1,
+              Birthplace: 20, work: 20, holiday: 3, Housemate: 3, height: 161, activated: true, activated_at: Time.zone.now)
 end
 
+
 users = User.all
+users.each {|user| user.join(Community.first)}
 user  = users.first
 following = users[2..50]
 followers = users[3..40]
@@ -69,58 +123,10 @@ following.each { |followed| guest_user.follow(followed) }
 followers.each { |follower| follower.follow(guest_user) }
 
 
-community = Category.create(name: 'コミュニティ')
 
-hobby, life_style, values = community.create(
-    [
-        { name: '趣味' },
-        { name: 'ライフスタイル' },
-        { name: '価値観' }
-    ])
-    
+             
 
-music, game = hobby.children.create(
-    [
-        { name: '音楽' },
-        { name: 'ゲーム' }
-    ])
-    
-['Youtubeが好き', 'カラオケが好き', 'バイオリンにハマってます'].each do |name|
-  music.children.create(name: name)
-end
 
-['Apex Legends', 'ポケモン', 'PS4'].each do |name|
-  game.children.create(name: name)
-end    
-    
-
-job, health = life_style.children.create(
-    [
-        { name: '仕事' },
-        { name: '美容・健康' }
-    ])
-
-['Webエンジニア', '経理', 'タクシードライバー'].each do |name|
-  job.children.create(name: name)
-end
-
-['アンチエイジング', '毎日プロテインを飲んでます', '健康オタクです'].each do |name|
-  health.children.create(name: name)
-end    
-    
-
-love, personality = values.children.create(
-    [
-        { name: '恋愛・結婚' },
-        { name: '性格' }
-    ])
-['忙しくても大切な人との時間は大切にしたい', '結婚を考えられる人とお付き合いしたい', '好きになるとトコトン一途'].each do |name|
-  love.children.create(name: name)
-end
-
-['一人の時間も大事にしたい', '笑顔が好き', 'ゴロゴロするのが好き'].each do |name|
-  personality.children.create(name: name)
-end    
     
 
 

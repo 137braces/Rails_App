@@ -1,7 +1,8 @@
 class User < ApplicationRecord
-  has_many :communities
-  has_many :messages
-  has_many :entries
+  has_many :joins, dependent: :destroy
+  has_many :communities,through: :joins
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
   has_many :rooms, through: :entries
   has_many :active_relationships, class_name:  "Relationship", foreign_key: "follower_id", dependent:   :destroy
   has_many :passive_relationships, class_name:  "Relationship", foreign_key: "followed_id", dependent:   :destroy
@@ -17,6 +18,8 @@ class User < ApplicationRecord
   
   #ユーザー名は２文字以上、10文字以下
   validates :name,  presence: true, length: {maximum: 30}
+  validates :content,  presence: false
+  validates :tweet,  presence: false, length: {maximum: 40}
   
   #『メールアドレス関連』
   before_save { self.email = email.downcase } #認証前に全ての文字を小文字に変換
@@ -66,22 +69,22 @@ class User < ApplicationRecord
   end
   
   
-  # アカウントを有効にする
+
   def activate
     update_columns(activated: FILL_IN, activated_at: FILL_IN)
   end
 
-  # 有効化用のメールを送信する
+
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
   end
   
-  # ユーザーをフォローする
+
   def follow(other_user)
     following << other_user
   end
 
-  # ユーザーをフォロー解除する
+ 
   def unfollow(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
@@ -91,10 +94,21 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
   
+  
   def matchers
     following & followers
   end
   
+  
+  def join(community)
+    joins.find_or_create_by(community_id: community.id)
+  end
+  
+  def not_join(community)
+    joins.delete_by(community_id: community.id)
+  end
+  
+ 
 
   private
 
@@ -108,7 +122,7 @@ class User < ApplicationRecord
       self.activation_token  = User.new_token
       self.activation_digest = User.digest(activation_token)
     end
-  
+    
   
   enum Body_shape: { スリム: 0, やや細め: 1, 普通: 2, グラマー: 3, 筋肉質:4, ややぽっちゃり:5, ぽっちゃり:6 }, _prefix: true
   

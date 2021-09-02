@@ -37,6 +37,13 @@ class UsersController < ApplicationController
     redirect_to root_url and return unless @user.activated?
   end
   
+  def community_list
+    @user = User.find(params[:id])
+    @communities = @user.communities.where(category: 0)
+    @communities2 = @user.communities.where(category: 1)
+    @communities3 = @user.communities.where(category: 2)
+  end
+  
   def create
     @user = User.new(user_params)
     if @user.save
@@ -57,7 +64,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params2)
-       redirect_to profile_user_path
+       redirect_to @user
     else
        render 'edit'
     end
@@ -69,6 +76,7 @@ class UsersController < ApplicationController
  
  def profile
     @user = User.find(params[:id])
+    @communities = @user.communities
  end
  
   #許可された値のみ取得{名前,メールアドレス,パスワード,パスワードの確認}
@@ -80,7 +88,7 @@ class UsersController < ApplicationController
    
    def user_params2
       params.require(:user).permit(:name, :email, :password,:password_confirmation, :sex, :age, :image, :height,
-                    :Body_shape, :blood_type, :residence, :Birthplace, :holiday, :work )
+                    :Body_shape, :blood_type, :residence, :Birthplace, :holiday, :work, :tweet, :content )
    end
     # 正しいユーザーかどうか確認
     def correct_user

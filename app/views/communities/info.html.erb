@@ -1,0 +1,28 @@
+<%= render 'users/left_partial' %>
+<div class="main-contents">
+   <div> 
+    <%= image_tag @community.image, class: "community_icon"  %>
+    <div><%= @community.name %></div>
+    
+    <% if @community.joined_by?(current_user) %>
+        <div style="padding-top:20px;"><%= link_to "このコミュニティから退会する", community_joins_path(community_id: @community.id), method: :delete, local: true, class: "detail-user-button2" %></div>
+    <% else %>
+        <div style="padding-top:20px;"><%= link_to "このコミュニティに参加する", community_joins_path(community_id: @community.id), method: :post, local: true, class: "detail-user-button2", style: "background: #348ceb;" %></div>
+    <% end %>
+   </div>
+<br>
+    <h3 style="margin-left:20px; color:#505154;">このコミュニティの参加者</h3>
+    <div class="user-grid " style="margin-left:41px;">
+         <% @users.each do |user| %>
+             <% if user.sex == "女性"  %>
+             <%= link_to user_path(user), method: :get do %>
+                <ul class="user-info">
+                  <div><%= image_tag user.image.url, class: "user_icon" , style:"cursor:pointer;" %></div>
+                      <li><p style="text-align:left;"><%= user.name[0, 5] + '...' %> <%= user.age %>歳 <%= user.residence %></p></li>
+                </ul>
+             <% end %>
+             <% end %>    
+        <% end %>
+    </div>
+</div>
+

@@ -1,0 +1,25 @@
+<%= render 'users/left_partial' %>
+<div class="main-contents">
+    <form class="community_search" id="community_search" action="/communities" accept-charset="UTF-8" method="get">
+      <div class="row">
+          <div class="col-xs-8">
+          　<input placeholder="search" class="input-lg" type="search" name="q[name_cont]" id="q_name_cont" v-model="textbox" />
+          </div>
+      </div>
+    </form> 
+    <h2 style="font-weight:bold; margin-left:20px;">コミュニティ</h2>
+    <div class="community-grid " style="margin-left:41px;">
+    <% @communities.each do |community| %>
+    <%= link_to info_path(community), method: :get do %>
+    <div class="community-info">
+        <% if community.image? %>
+            <div><%= image_tag community.image, class: "community_icon" %></div>
+        <% else %>
+            <div><%= image_tag "default_icon.jpg", class: "community_icon" %></div>
+        <% end %>
+        <p><%= community.name %></p>
+        </div>
+        <% end %>
+    <% end %>
+    </div>
+</div>

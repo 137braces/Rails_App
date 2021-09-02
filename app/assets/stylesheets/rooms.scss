@@ -5,11 +5,15 @@
 
 }
 
-.form-text-field {
-    line-height: 5; 
-    background-color:#ffffff; 
-    row: 10;
-    border-style: solid;
-    border-color: #4eed79;
-    border-radius: 30px;
+.form-message {
+    display:flex;
+    justify-content:center;
+    width: 60%;
+    height: 33%;
+    position: fixed;/*←絶対位置*/
+    bottom: 0px; /*下に固定*/
+    
+    z-index: 3;
+    background: #fff;
+    right:20px;
 }

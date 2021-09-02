@@ -9,8 +9,8 @@
 <div class="main-contents">
     <p style="font-size:2em; font-weight:bolder;">さがす</p>
       
-          <div v-on:click="openModal"  class="fas fa-search search-name" id="search-form">
-          </div>
+          <div v-on:click="openModal"  class="fas fa-search search-name" id="search-form"></div>
+              
               <div v-show="searchC" class="search-users">
                   <button v-on:click="closeModal" class="fas fa-times cross-icon"></button>
                   <div class="search-wrapper">
@@ -21,9 +21,9 @@
           
          <div class="user-grid " style="margin-left:41px;">
              <% @users.each do |user| %>
-                 <%= link_to favorite_path(user), style: "cursor:default;", method: :post do %>
+                 <%= link_to user_path(user), method: :get do %>
                     <ul class="user-info">
-                      <div><%= image_tag user.image.url, class: "user_icon" %></div>
+                      <div><%= image_tag user.image.url, class: "user_icon" , style:"cursor:pointer;" %></div>
                           <li><p style="text-align:left;"><%= user.name[0, 5] + '...' %> <%= user.age %>歳 <%= user.residence %></p></li>
                     </ul>
                  <% end %>
