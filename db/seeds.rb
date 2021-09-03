@@ -100,7 +100,7 @@ Community.create!(name:  "カメラ・写真が好き", content: "", image: "cam
 Community.create!(name:  "インスタグラム", content: "", image: "insta.jpg",category: 0, genre:11)
 
 
-99.times do |n|
+30.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "Apple0713"
@@ -113,8 +113,8 @@ users = User.all
 users.each {|user| user.join(Community.first)}
 user  = users.first
 guest_user  = User.second
-following = users[2..50]
-followers = users[3..40]
+following = users[2..30]
+followers = users[3..20]
 following.each { |followed| guest_user.follow(followed) }
 followers.each { |follower| follower.follow(guest_user) }
 
