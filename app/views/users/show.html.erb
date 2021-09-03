@@ -42,15 +42,15 @@
               
               
               <div>
-              <% if @user.tweet.present? %>
-                <% if @user.content == nil %>
-                  <p></p>
-                <% else %>  
-                  <p style="text-align:center;"><%= @user.content[0, 30] + '...' %></p>
+                <% if @user.tweet.present? %>
+                  <% if @user.content == nil %>
+                    <p></p>
+                  <% else %>  
+                    <p style="text-align:center;"><%= @user.content[0, 30] + '...' %></p>
+                  <% end %>
+                <% else %>
+                  <p style="text-align:center;"><%= @user.tweet %></p>
                 <% end %>
-              <% else %>
-              <p style="text-align:center;"><%= @user.tweet %></p>
-              <% end %>
               </div>
               
               <div style="border-top: solid 2px #b8b2b2;">
@@ -59,14 +59,16 @@
                 <p style="margin-top:40px;text-align:center; font-size:20px; font-weight:bold; text-decoration: none; "><%= link_to "すべてを見る" ,community_list_path %></p>
                   <div class="table-responsive" style="margin-top:30px;">
                     <table>
-                    <div class="community-grid " style="margin-left:41px; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;">
-                      <% @user.communities.each do |c| %>
-                        <div class="community-info">
-                           <%= image_tag c.image, class: "community_icon"  %>
-                           <p><%= c.name %></p>
-                        </div>
-                      <% end %>
-                    </div>
+                      <div class="community-grid " style="margin-left:41px; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;">
+                        <% @user.communities.each do |c| %>
+                          <div class="community-info">
+                             <%= link_to info_path(c) do %>
+                               <%= image_tag c.image, class: "community_icon"  %>
+                               <p><%= c.name %></p>
+                             <% end %>
+                          </div>
+                        <% end %>
+                      </div>
                    </table>
                   </div>
                 <% else %>

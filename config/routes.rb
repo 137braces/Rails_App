@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
-
+  get '/policy:id', to: 'static_pages#policy',as: 'policy'
+  get '/terms:id', to: 'static_pages#terms',as: 'terms'
   
   resources :guest_sessions, only: [:create]
   

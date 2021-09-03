@@ -2,7 +2,7 @@
 <div class="main-contents">
    <div> 
     <%= image_tag @community.image, class: "community_icon"  %>
-    <div><%= @community.name %></div>
+    <div><strong style="font-size:20px;"><%= @community.name %></strong></div>
     
     <% if @community.joined_by?(current_user) %>
         <div style="padding-top:20px;"><%= link_to "このコミュニティから退会する", community_joins_path(community_id: @community.id), method: :delete, local: true, class: "detail-user-button2" %></div>

@@ -4,4 +4,12 @@ class StaticPagesController < ApplicationController
     
   end
   
+  def policy
+    
+  end
+  
+  def terms
+    
+  end
+  
 end

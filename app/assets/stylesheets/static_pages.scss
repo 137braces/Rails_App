@@ -3,7 +3,7 @@
 }
 
 .small-heading {
-  margin-top: 8%; 
+  margin-top: 5%; 
 }
 
 .fa-heart2 {
@@ -102,4 +102,23 @@ a.btn--signup2 {
 
 .guest-login {
   border-top: solid 1px #c0c4c4;
+}
+
+.about-footer {
+  display: flex;
+  justify-content: center;
+}
+
+footer {
+  padding:20px;
+}
+
+.about-footer {
+  margin-top:8px;
+  list-style: none;
+}
+
+.about-footer a {
+  font-weight: bold;
+  font-size:15px;
 }

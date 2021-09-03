@@ -12,8 +12,10 @@
             <div class="community-grid " style="margin-left:41px; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;">
               <% @communities.each do |c| %>
                 <div class="community-info">
-                   <%= image_tag c.image, class: "community_icon2"  %>
-                   <p><%= c.name %></p>
+                   <%= link_to info_path(c) do %>
+                     <%= image_tag c.image, class: "community_icon2"  %>
+                     <p><%= c.name %></p>
+                   <% end %>  
                 </div>
               <% end %>
             </div>  
