@@ -8,13 +8,13 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name:  "Relationship", foreign_key: "followed_id", dependent:   :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
-  
+  mount_uploader :image, ImageUploader
   
   attr_accessor :remember_token, :activation_token
   before_save   :downcase_email
   before_create :create_activation_digest
   
-  mount_uploader :image, ImageUploader
+  
   
   #ユーザー名は２文字以上、10文字以下
   validates :name,  presence: true, length: {maximum: 30}
@@ -96,7 +96,7 @@ class User < ApplicationRecord
   
   
   def matchers
-    following & followers
+    User.where(id: passive_relationships.select(:follower_id)).where(id: active_relationships.select(:followed_id))
   end
   
   

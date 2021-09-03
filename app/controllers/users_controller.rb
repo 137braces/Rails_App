@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.matchers
     @followerUsers = @user.followers
+  
   end
   
   def index

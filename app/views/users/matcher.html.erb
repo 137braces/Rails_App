@@ -12,7 +12,7 @@
         <div v-if="isActive === 'A'" style="border-top-style: solid; border-width:1px; border-color:#ebeef2;">
             <% @users.each do |user| %>
             <%= link_to send_message_path(user), style: "cursor:default;", method: :post do %>
-            <div style="margin-left:41px; margin-top:10px;"><%= image_tag user.image.url, class: "user_icon4" %></div>
+            <div style="margin-left:41px; margin-top:10px;"><%= image_tag user.image_url, class: "user_icon4" %></div>
                 <ul class="user-info-2">
                     <li><p><%= user.name %></p></li>
                     <li><p><%= user.age %>歳 <%= user.residence %></p></li>
@@ -28,7 +28,7 @@
     
         <div v-else-if="isActive === 'B'" style="overflow: hidden; border-top-style: solid; border-width:1px; border-color:#ebeef2;">
             <% @followerUsers.each do |user| %>
-            <div style="margin-left:41px; margin-top:10px;"><%= image_tag user.image.url, class: "user_icon4" %></div>
+            <div style="margin-left:41px; margin-top:10px;"><%= image_tag user.image_url, class: "user_icon4" %></div>
                 <ul class="user-info-2">
                     <li><p><%= user.name %></p></li>
                     <li><p><%= user.age %>歳 <%= user.residence %></p></li>

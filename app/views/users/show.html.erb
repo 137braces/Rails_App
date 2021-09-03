@@ -42,14 +42,14 @@
               
               
               <div>
-                <% if @user.tweet.present? %>
+                <% if @user.tweet == nil %>
                   <% if @user.content == nil %>
                     <p></p>
                   <% else %>  
-                    <p style="text-align:center;"><%= @user.content[0, 30] + '...' %></p>
+                    <strong><p style="text-align:center;"><%= @user.content[0, 30] + '...' %></p></strong>
                   <% end %>
-                <% else %>
-                  <p style="text-align:center;"><%= @user.tweet %></p>
+                <% elsif @user.tweet.present? %>
+                  <strong ><p style="text-align:center;"><%= @user.tweet %></p></strong>
                 <% end %>
               </div>
               

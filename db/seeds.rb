@@ -1,6 +1,6 @@
 
 User.create!(name:  "Aoki", email: "hayata@railstutorial.org",password: "Apple0713", password_confirmation: "Apple0713", age: 23, sex: 0,
-             image: "myself.jpg", residence: 26, blood_type: 1, Birthplace: 20, work: 20, holiday: 3, height: 173,
+             residence: 26, blood_type: 1, Birthplace: 20, work: 20, holiday: 3, height: 173,
              content: "はじめまして、プロフィールを見て頂きありがとうございます。真剣な出会いを探そうと、思い切ってペアーズに登録してみました！
                         【お仕事】
                         お仕事はWebデザイナーをしており、企業や個人などのクライアントから依頼されたWebサイトのデザインを担当しています。職場の環境や人間関係が良く、デザイナーは将来性もあるため、日々デザインの勉強もしながら楽しくお仕事をさせて頂いています。
@@ -14,7 +14,7 @@ User.create!(name:  "Aoki", email: "hayata@railstutorial.org",password: "Apple07
                         もし少しでも興味を持って頂けたら、いいねを送っていただけると嬉しいです。", admin: true, activated: true, activated_at: Time.zone.now)
              
 User.create!(name:  "ゲスト様", email: "guest@example.com", password: "Apple0713", password_confirmation: "Apple0713", age: 33, sex: 0,
-             image: "guest.jpg", residence: 27, blood_type: 1, Birthplace: 20,  work: 20, holiday: 3,
+             residence: 27, blood_type: 1, Birthplace: 20,  work: 20, holiday: 3,
              height: 170,
              content: "はじめまして、プロフィールを見て頂きありがとうございます。真剣な出会いを探そうと、思い切ってペアーズに登録してみました！
                         【お仕事】
@@ -29,40 +29,40 @@ User.create!(name:  "ゲスト様", email: "guest@example.com", password: "Apple
                         もし少しでも興味を持って頂けたら、いいねを送っていただけると嬉しいです。", admin: true, activated: true, activated_at: Time.zone.now)
 
 User.create!(name: "ゆっきー", email: "yukkiy@example.com", password: "Apple0713", password_confirmation: "Apple0713", age: 25, sex: 1,
-             image: "woman1.jpg" , residence: 27, blood_type: 1, Birthplace: 20, work: 20, holiday: 3,
+             residence: 27, image: "woman.jpg", blood_type: 1, Birthplace: 20, work: 20, holiday: 3,
              height: 163, admin: true,activated: true, activated_at: Time.zone.now)
 User.create!(name:  "葵", email: "aoaoao@example.com", password: "Apple0713", password_confirmation: "Apple0713",
-             age: 20, sex: 1, image: File.open("./app/assets/images/woman1.jpg"), residence: 20, blood_type: 3, Birthplace: 20,
+             age: 20, sex: 1, residence: 20, image: "woman1.jpg", blood_type: 3, Birthplace: 20,
              work: 40, holiday: 1, height: 155, admin: true, activated: true, activated_at: Time.zone.now,
              tweet: "アニソン好きな人と繋がりたい！")
              
 User.create!(name:  "あみ", email: "amiami@example.com", password: "Apple0713", password_confirmation: "Apple0713",
-             age: 22, sex: 1, image: "woman2.jpg" , residence: 19, blood_type: 3, Birthplace: 19,
+             age: 22, sex: 1, residence: 19, image: "woman2.jpg", blood_type: 3, Birthplace: 19,
              work: 40, holiday: 3, height: 167, admin: true, activated: true, activated_at: Time.zone.now,
              tweet: "誠実でリードしてくれる男性がタイプです！")
 
 User.create!(name:  "美佐子", email: "isonomisako@example.com", password: "Apple0713", password_confirmation: "Apple0713",
-             age: 25, sex: 1, image: "woman3.jpg" , residence: 10, blood_type: 0, Birthplace: 13,
+             age: 25, sex: 1, residence: 10,  image: "woman3.jpg",blood_type: 0, Birthplace: 13,
              work: 13, holiday: 0, height: 164, admin: true, activated: true, activated_at: Time.zone.now,
              tweet: "結婚を前提にお付き合いできる方を探してます！")
 
 User.create!(name:  "Risa", email: "risa@example.com", password: "Apple0713", password_confirmation: "Apple0713",
-             age: 26, sex: 1, image: "woman4.jpg" , residence: 27, blood_type: 1, Birthplace: 20,
+             age: 26, sex: 1, residence: 27, image: "woman4.jpg", blood_type: 1, Birthplace: 20,
              work: 20, holiday: 3, height: 163, admin: true, activated: true, activated_at: Time.zone.now,
              tweet: "カットモデルをしています！")
 
 User.create!(name:  "まり", email: "mari@example.com", password: "Apple0713", password_confirmation: "Apple0713",
-             age: 24, sex: 1, image: "woman5.jpg" , residence: 27, blood_type: 1, Birthplace: 12,
+             age: 24, sex: 1, image: "woman5.jpg",  residence: 27, blood_type: 1, Birthplace: 12,
              work: 12, holiday: 3, height: 153, admin: true, activated: true, activated_at: Time.zone.now,
              tweet: "お話ししましょ！")
 
 User.create!(name:  "みなみ", email: "minaminami@example.com", password: "Apple0713", password_confirmation: "Apple0713",
-             age: 25, sex: 1, image: "woman6.jpg" , residence: 27, blood_type: 1, Birthplace: 20,
+             age: 25, sex: 1, residence: 27,image: "woman6.jpg",  blood_type: 1, Birthplace: 20,
              work: 20, holiday: 3, height: 163, admin: true, activated: true, activated_at: Time.zone.now, 
              tweet: "クールに見られますが、意外とゲラです")
 
 User.create!(name:  "エマーソン", email: "emasonemason@example.com", password: "Apple0713", password_confirmation: "Apple0713",
-             age: 32, sex: 1, image: "woman7.jpg" , residence: 10, blood_type: 2, Birthplace: 22,
+             age: 32, sex: 1, image: "woman7.jpg", residence: 10, blood_type: 2, Birthplace: 22,
              work: 2, holiday: 0, height: 159, admin: true, activated: true, activated_at: Time.zone.now)
 
 # 追加のユーザーをまとめて生成する
@@ -100,7 +100,7 @@ Community.create!(name:  "カメラ・写真が好き", content: "", image: "cam
 Community.create!(name:  "インスタグラム", content: "", image: "insta.jpg",category: 0, genre:11)
 
 
-30.times do |n|
+99.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "Apple0713"
@@ -113,8 +113,8 @@ users = User.all
 users.each {|user| user.join(Community.first)}
 user  = users.first
 guest_user  = User.second
-following = users[2..30]
-followers = users[3..20]
+following = users[2..50]
+followers = users[3..40]
 following.each { |followed| guest_user.follow(followed) }
 followers.each { |follower| follower.follow(guest_user) }
 
