@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_25_063657) do
+ActiveRecord::Schema.define(version: 2021_09_02_175623) do
 
   create_table "communities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -75,17 +75,10 @@ ActiveRecord::Schema.define(version: 2021_08_25_063657) do
     t.string "blood_type"
     t.integer "residence"
     t.integer "Birthplace"
-    t.integer "job"
     t.integer "height"
     t.integer "Body_shape"
     t.integer "holiday"
-    t.integer "Housemate"
-    t.integer "Personality"
     t.integer "work"
-    t.integer "tobacco"
-    t.integer "drink"
-    t.integer "to_want_marry"
-    t.integer "to_want_child"
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"

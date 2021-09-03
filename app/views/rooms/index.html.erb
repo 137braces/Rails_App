@@ -1,6 +1,14 @@
 <%= render 'users/left_partial' %>
 <div class="main-contents">
 <h2>メッセージ一覧</h2>
+<% if @anotherEntries.empty? %>
+  <div style="margin-top:30px;">
+    <p style="text-align:center; font-size:30px;">メッセージがありません</p>
+    <div style="display:flex; justify-content:center;">
+        <%= link_to 'マッチングしたお相手にメッセージ', match_path(current_user), method: :get, class: "detail-user-button shadow" ,id: "send_message-s", style: "padding-top:30px; padding-bottom:30px; font-size:20px;" %>
+    </div>
+  </div>
+<% else %>
 <% @anotherEntries.includes([:room],[:user]).each do |e| %>
     <table class="table table-striped">
         <tr>
@@ -27,5 +35,6 @@
             </td>
         </tr>
     </table>
+  <% end %>
 <% end %>
 </div>
