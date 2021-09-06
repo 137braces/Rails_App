@@ -78,13 +78,13 @@ ER図
 
 【テーブル設計】
 
-users 　　　　　　　『ユーザー登録情報』
-relationship 　　　　『いいね！いいね返し』
-communities 　　　  『コミュニティ情報』
-join                                 『usersとcommunitiesの中間テーブル』
-rooms　　　　　　   『メッセージルームの管理』
-entries　　　　　　  『usersとroomsの中間テーブル』
-messages　　　　　『マッチング同士のメッセージ内容の管理』
+users 『ユーザー登録情報』
+relationship 『いいね！いいね返し』
+communities 『コミュニティ情報』
+join 『usersとcommunitiesの中間テーブル』
+rooms 『メッセージルームの管理』
+entries　 『usersとroomsの中間テーブル』
+messages　　『マッチング同士のメッセージ内容の管理』
 
 
 【機能一覧】
