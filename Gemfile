@@ -8,6 +8,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.7'
 gem 'fog-aws'
 gem 'dotenv-rails'
 # Use mysql as the database for Active Record
+gem 'aws-sdk-rails', '~> 3.6', '>= 3.6.1'
 gem 'mysql2'#, '>= 0.4.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
