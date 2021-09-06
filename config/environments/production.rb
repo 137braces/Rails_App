@@ -1,9 +1,9 @@
 Rails.application.configure do
   
-=begin
+
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = '<あなたのHerokuサブドメイン名>.herokuapp.com'
+  host = 'https://guarded-oasis-25353.herokuapp.com/'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
     :port           => ENV['MAILGUN_SMTP_PORT'],
@@ -13,7 +13,7 @@ Rails.application.configure do
     :domain         => host,
     :authentication => :plain,
   }
-=end
+
   
   # Settings specified here will take precedence over those in config/application.rb.
 

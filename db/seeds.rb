@@ -32,7 +32,7 @@ User.create!(name: "ゆっきー", email: "yukkiy@example.com", password: "Apple
              image: File.open("./app/assets/images/woman.jpg"), residence: 27, blood_type: 1, Birthplace: 20, work: 20, holiday: 3,
              height: 163, admin: true,activated: true, activated_at: Time.zone.now)
 User.create!(name:  "葵", email: "aoaoao@example.com", password: "Apple0713", password_confirmation: "Apple0713",
-             age: 20, sex: 1, image: File.open("./app/assets/images/woman1.jpg"), residence: 20, blood_type: 3, Birthplace: 20,
+             age: 20, sex: 1, image: "https://elasticbeanstalk-ap-southeast-1-189156161220.s3.ap-southeast-1.amazonaws.com/woman1.jpg", residence: 20, blood_type: 3, Birthplace: 20,
              work: 40, holiday: 1, height: 155, admin: true, activated: true, activated_at: Time.zone.now,
              tweet: "アニソン好きな人と繋がりたい！")
              
