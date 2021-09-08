@@ -1,0 +1,3 @@
+release:
+  command:
+     rake assets:precompile 

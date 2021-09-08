@@ -14,6 +14,10 @@ Rails.application.configure do
     :authentication => :plain,
   }
 
+config.assets.compile = true
+
+config.action_controller.asset_host = '//d1614z7loe724t.cloudfront.net'
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

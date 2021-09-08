@@ -9,10 +9,11 @@ RSpec.describe Relationship, type: :model do
       it "上記のidをuserに紐づけた際、能動的関係が成り立つ" do
         expect(relationship).to be_valid
       end
+      
       it "フォロワーidが空の場合、関係性は有効ではない" do
         relationship.follower_id = nil
         expect(relationship).to be_invalid
-    　end
+      end
       
       it "フォローidが空の場合、関係性は有効ではない" do
         relationship.followed_id = nil
@@ -36,6 +37,6 @@ RSpec.describe Relationship, type: :model do
       it "自分がフォローしたユーザーのフォロワーに、自分自身が含まれている" do
         expect(other_user.followers.include?(user)).to be_truthy
       end
-  end
+   end
   end 
 end
