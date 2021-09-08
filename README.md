@@ -1,13 +1,6 @@
 【はじめに】
-ソースコード⬇︎
-
-Github
-
-サイトURL⬇︎
-
-作品(RailsApp)
-
-
+READMEの文章に崩れがありますので、気になる方は下記のResumeからご確認をお願い致します。⬇︎
+https://www.resume.id/works/e6b13edf2abd8f88
 
 作品の閲覧に関しましては、URLに遷移後のトップページ下の『ゲストログイン』をクリックしていただくと簡単ログインができます。
 
@@ -78,13 +71,13 @@ ER図
 
 【テーブル設計】
 
-users 　　　　　　　『ユーザー登録情報』
-relationship 　　　　『いいね！いいね返し』
-communities 　　　  『コミュニティ情報』
-join                                 『usersとcommunitiesの中間テーブル』
-rooms　　　　　　   『メッセージルームの管理』
-entries　　　　　　  『usersとroomsの中間テーブル』
-messages　　　　　『マッチング同士のメッセージ内容の管理』
+users 『ユーザー登録情報』
+relationship 『いいね！いいね返し』
+communities 『コミュニティ情報』
+join 『usersとcommunitiesの中間テーブル』
+rooms 『メッセージルームの管理』
+entries　 『usersとroomsの中間テーブル』
+messages　　『マッチング同士のメッセージ内容の管理』
 
 
 【機能一覧】
