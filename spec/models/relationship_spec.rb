@@ -19,8 +19,6 @@ RSpec.describe Relationship, type: :model do
         relationship.followed_id = nil
         expect(relationship).to be_invalid
       end
-      
-  end
 
   before { user.follow(other_user) }
 
