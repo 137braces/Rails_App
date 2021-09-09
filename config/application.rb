@@ -25,6 +25,7 @@ module RailsApp
     
     ActionCable.server.config.disable_request_forgery_protection = true
     config.action_cable.url = 'wss://hogehoge.com/cable' 
+    
   end
   
 end
