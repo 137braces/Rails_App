@@ -58,6 +58,11 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    asset_sync (2.15.0)
+      activemodel (>= 4.1.0)
+      fog-core
+      mime-types (>= 2.99)
+      unf
     autoprefixer-rails (10.2.5.1)
       execjs (> 0)
     aws-eventstream (1.1.1)
@@ -323,6 +328,9 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.7)
     uniform_notifier (1.14.2)
     web-console (4.1.0)
       actionview (>= 6.0.0)
@@ -349,6 +357,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  asset_sync
   aws-sdk-rails (~> 3.6, >= 3.6.1)
   aws-sdk-s3 (= 1.46.0)
   bcrypt (~> 3.1.7)

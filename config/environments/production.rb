@@ -15,7 +15,7 @@ Rails.application.configure do
   }
 
 config.assets.compile = true
-
+config.action_controller.asset_host = "http:/xxx.s3.amazonaws.com"
 config.action_controller.asset_host = '//d1614z7loe724t.cloudfront.net'
 
   # Settings specified here will take precedence over those in config/application.rb.
