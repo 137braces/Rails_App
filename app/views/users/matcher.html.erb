@@ -11,16 +11,16 @@
         
         <div v-if="isActive === 'A'" style="border-top-style: solid; border-width:1px; border-color:#ebeef2;">
             <% @users.each do |user| %>
-            <%= link_to send_message_path(user), style: "cursor:default;", method: :post do %>
+            
             <div style="margin-left:41px; margin-top:10px;"><%= image_tag user.image_url, class: "user_icon4" %></div>
                 <ul class="user-info-2">
                     <li><p><%= user.name %></p></li>
                     <li><p><%= user.age %>歳 <%= user.residence %></p></li>
                 </ul>
             <div class="button-contents-msg">
-                <%= link_to 'プロフィール詳細', send_message_path(user), method: :get, class: "detail-user-button shadow" %>
+                <%= link_to 'プロフィール詳細', user_path(user), method: :get, class: "detail-user-button shadow" %>
             </div>
-        <% end %>
+     
         <% end %>
         </div>
     
